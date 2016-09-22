@@ -1,0 +1,34 @@
+<div class="resume">
+    <link rel="stylesheet" type="text/css" href="css/resume.css" />
+
+    <div class="contactInfo">
+        <h1>Robert F. Masen</h1>
+        <div class="extensions">
+            <h6>r.f.masen@gmail.com</h6>
+            <h6>612-293-6532</h6>
+        </div>
+    </div>
+    <div class="work-history">
+        <div class="error" ng-if="$ctrl.hasError"><p>{{ $ctrl.errorText }}</p></div>
+
+        <ul ng-repeat="job in $ctrl.jobs" class="jobs-list">
+            <div class="job">
+                <li class="name">{{ job.name }}</li>
+                <ul class="suppliment">
+                    <li class="employer">{{ job.employer }}</li>
+                    <li class="timeline">{{ job.start }} - {{ job.end }}</li>
+                </ul>
+                <div ng-repeat="bullet in job.bullets" class="bullets"> 
+                    <p class="heading">
+                        {{ bullet.name }}
+                    </p>
+                    <ul class="points">
+                        <li class="point" ng-repeat="sub in bullet.subs">
+                            {{ sub }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>

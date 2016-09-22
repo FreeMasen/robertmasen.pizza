@@ -1,0 +1,67 @@
+.contactInfo {
+    margin-left: 10px;
+}
+
+.contactInfo h1, .contactInfo .extensions {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.extensions {
+    display: inline;
+}
+
+.extensions h6 {
+    display: inline-block;
+    margin: 0 25px 0 0;
+}
+
+
+.job .name {
+    font-weight: bold;
+    font-size: 18pt;
+    border-bottom: 2px;
+    border-color: grey;
+    border-bottom-style: solid;
+}
+
+.suppliment {
+    list-style: none;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.job-list {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.suppliment li {
+    display: inline-block;
+    margin-right: 15px;
+    font-style: oblique;
+}
+
+.heading {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.points {
+    padding-left: 8px;
+    font-size: 12px;
+}
+
+.point {
+    padding-bottom: 2px;
+}
+
+.point:before {
+    content: "∙";
+    padding-right: 2px;
+}
