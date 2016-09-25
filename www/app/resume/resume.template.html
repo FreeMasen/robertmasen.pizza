@@ -1,4 +1,4 @@
-<div class="resume">
+<div class="resume container">
     <link rel="stylesheet" type="text/css" href="css/resume.css" />
 
     <div class="contactInfo">
@@ -8,27 +8,24 @@
             <h6>612-293-6532</h6>
         </div>
     </div>
-    <div class="work-history">
-        <div class="error" ng-if="$ctrl.hasError"><p>{{ $ctrl.errorText }}</p></div>
-
-        <ul ng-repeat="job in $ctrl.jobs" class="jobs-list">
-            <div class="job">
-                <li class="name">{{ job.name }}</li>
-                <ul class="suppliment">
-                    <li class="employer">{{ job.employer }}</li>
-                    <li class="timeline">{{ job.start }} - {{ job.end }}</li>
-                </ul>
-                <div ng-repeat="bullet in job.bullets" class="bullets"> 
-                    <p class="heading">
-                        {{ bullet.name }}
-                    </p>
+    <div class="experience">
+        <div class="error" ng-if="$ctrl.hasError" class="jumbotron"><p>{{ $ctrl.errorText }}</p></div>
+        <div class="area" ng-repeat="section in $ctrl.qualifications">
+            <h2 class="section-header">{{ section.name }}</h2>
+            <ul ng-repeat="exp in section.experiences" class="exp-list">
+                <div class="exp-item">
+                    <li class="title">{{ exp.title }}</li>
+                    <ul class="suppliment">
+                        <li class="employer">{{ exp.employer }}</li>
+                        <li class="timeline">{{ exp.start }} - {{ exp.end }}</li>
+                    </ul>
                     <ul class="points">
-                        <li class="point" ng-repeat="sub in bullet.subs">
-                            {{ sub }}
-                        </li>
+                        <li class="point" ng-repeat="bullet in exp.bullets">{{ bullet }}</li>
                     </ul>
                 </div>
-            </div>
-        </ul>
+                
+            </ul>
+        </div>
     </div>
+    
 </div>

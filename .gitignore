@@ -5,3 +5,6 @@ jsconfig.json
 **/npm-debug.log
 
 .vscode
+
+**.json
+.DS_Store

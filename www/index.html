@@ -2,42 +2,44 @@
 <html ng-app="rm">
     <head>
         <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <link rel="stylesheet" type="text/css" href="node_modules/bootswatch/slate/bootstrap.min.css" />
-        
+        <link rel="stylesheet" type="text/css" href="css/navigation.css" />
+
         <script src="node_modules/angular/angular.min.js"></script>
         <script src="node_modules/angular-route/angular-route.js"></script>
+        <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+        
+
         
         <script src="app/resume/resume.module.js"></script>
         <script src="app/resume/resume.component.js"></script>
         
-        <script src="app/portfolio/portfolio.module.js"></script>
-        <script src="app/portfolio/portfolio.component.js"></script>
-        
         <script src="app/app.module.js"></script>
         <script src="app/app.config.js"></script>
-        
 
-
+                <script src="app/services/navigation/navigation.module.js"></script>
+        <script src="app/services/navigation/navigation.service.js"></script>
     </head>
     <body>
         <div class="wrapper">
-            <nav class="nav navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#!/">Robert F. Masen</a>
-                    </div>
-                
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="#!/portfolio">Portfolio</a>    
-                        </li>
-                        <li>
-                            <a href="#!/resume">Resume</a>
-                        </li>
-                    </ul>
-                </div>
+            <nav class="navigation">
+                <ul class="navigation-items">
+                    <li class="navigation-item" ng-class="{'active': selectedTab === home}">
+                        <a href="/"><img src="img/home-text.png" class="nav-image" /></a>
+                    </li>
+                    <li class="navigation-item">
+                        <a href="#!/resume"><img src="img/work-text.png" class="nav-image" /></a>
+                    </li>
+                    <li class="navigation-item">
+                        <a href="#!/portfolio"><img src="img/about-text.png" class="nav-image" /></a>
+                    </li>
+                    <li class="navigation-item">
+                        <a href="http://github.com/freemasen"><img src="img/contact-text.png" class="nav-image" /></a>
+                    </li>
+                </ul>
             </nav>
-            <div ng-view></div>
+            <div class="view-container" >
+                <div ng-view class="view-frame"></div>
+            </div>
         </div>
     </body>
 </html>

@@ -1,15 +1,23 @@
 .contactInfo {
-    margin-left: 10px;
+    text-align: center;
+    border-bottom-style: solid;
+    border-bottom-color: darkgrey;
+    border-bottom-width: 3px;
 }
 
-.contactInfo h1, .contactInfo .extensions {
+.contactInfo, .contactInfo .extensions {
     margin: 0;
     padding: 0;
-    border: 0;
 }
 
 .extensions {
     display: inline;
+}
+
+.jobs-list {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 .extensions h6 {
@@ -46,19 +54,16 @@
     font-style: oblique;
 }
 
-.heading {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 2px;
-}
-
-.points {
+.bullets {
     padding-left: 8px;
     font-size: 12px;
 }
 
 .point {
-    padding-bottom: 2px;
+    padding-bottom: 4px;
+    border-bottom-style: dotted;
+    border-bottom-color: whitesmoke;
+    border-bottom-width: 1px;
 }
 
 .point:before {

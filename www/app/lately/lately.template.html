@@ -1,0 +1,10 @@
+<div class="lately">
+    <link rel="stylesheet" type="text/css" href="css/lately.css" />
+    <ul class="activities">
+        <li ng-repeat="activity in $ctrl.activities" class="activity">
+            <h3 class="name">{{ activity.repo.name }}</h3>
+            <h6 class="type">{{ activity.type }}</h6>
+            <p class="timeStamp">{{ activity.created_at }}</p>
+        </li>
+    </ul>
+</div>

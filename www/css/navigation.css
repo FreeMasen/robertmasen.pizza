@@ -1,0 +1,37 @@
+.navigation {
+    border-color: transparent transparent whitesmoke transparent;
+    border-width: 0 0 3px 0;
+    border-style: none none solid none;
+}
+
+.navigation .navigation-items {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        /* For IE, the outcast */
+        zoom:1;
+        *display: inline;
+}
+
+.navigation .navigation-item {
+        margin: auto;
+        padding: 0;
+        border: 0;
+        width: 22%;
+        box-sizing: content-box;
+        background-color: transparent;
+}
+
+.navigation-item:hover {
+    background-color: whitesmoke;
+}
+
+.nav-image {
+    width: 100%;
+}
+
+@media (max-width: 800pt) {
+    .navigation .navigation-item * {
+        width: 80%;
+    }
+}
