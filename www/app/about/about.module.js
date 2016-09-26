@@ -1,4 +1,3 @@
 angular.module('about', [
-    'ngRoute',
-    'lately'
+    'ngRoute'
 ]);

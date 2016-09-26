@@ -1,11 +1,12 @@
 <link rel="stylesheet" type="text/css" href="/css/about.css" />
-<div class="about">
+<div class="about container">
     <div class="section" ng-repeat="story in $ctrl.life">
         <h3 class="title">{{ story.title }}</h3>
         <p ng-if="story.description" class="description">{{ story.desciption }}</p>
-        <ul class="highlights" ng-if="story.highlighs">
+        <ul class="highlights">
             <li ng-repeat="highlight in story.highlights">
-                <p class="highlight">{{ highlight }}</p>
+                <h6 class="hilight-heading">{{ highlight.heading }}</h6>
+                <p class="highlight-content">{{ highlight.content }}</p>
             </li>
         </ul>
     </div>

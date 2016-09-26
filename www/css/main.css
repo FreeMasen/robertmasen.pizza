@@ -51,3 +51,11 @@ body * {
 
 }
 
+.container {
+    width: 90%;
+    border-color: whitesmoke;
+    border-width: 2px;
+    border-radius: 2%;
+    border-style: solid;
+    margin: 5px auto;
+}
