@@ -7,23 +7,20 @@ angular.
 
 
                 $routeProvider
-                .when('/work', {
-                    template: '<work></work>'
+                .when('/resume', {
+                    template: '<resume></resume>'
+                })
+                .when('/portfolio', {
+                    template: '<portfolio></portfolio>'
                 })
                 .when('/about', {
                     template: '<about></about>'
                 })
-                .when('/work', {
-                    template: '<lately></lately>'
+                .when('/contact', {
+                    template: '<contact></contact>'
                 })
                 .otherwise({
                     template: ''
                 });
                 }
         ]);
-
-// angular.module('rm').run(['$rootScope', '$location','navigation', function($rootScope, $location, navigation) {
-//                 $rootScope.$on('$routeChangeSuccess', (event, c, p) => {
-//                     navigation($location.$$path);
-//                 })
-// }])

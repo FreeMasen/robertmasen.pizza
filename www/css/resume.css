@@ -1,32 +1,18 @@
-.contactInfo {
-    text-align: center;
-    border-bottom-style: solid;
-    border-bottom-color: darkgrey;
-    border-bottom-width: 3px;
+.container {
+    width: 90%;
+    border-color: whitesmoke;
+    border-width: 2px;
+    border-radius: 2%;
+    border-style: solid;
+    margin: 5px auto;
 }
 
-.contactInfo, .contactInfo .extensions {
-    margin: 0;
-    padding: 0;
-}
-
-.extensions {
-    display: inline;
-}
-
-.jobs-list {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
-.extensions h6 {
-    display: inline-block;
-    margin: 0 25px 0 0;
+.area {
+    padding: 0 10px;
 }
 
 
-.job .name {
+.exp .title {
     font-weight: bold;
     font-size: 18pt;
     border-bottom: 2px;
@@ -42,12 +28,6 @@
     border: 0;
 }
 
-.job-list {
-    padding: 0;
-    margin: 0;
-    border: 0;
-}
-
 .suppliment li {
     display: inline-block;
     margin-right: 15px;
@@ -56,7 +36,7 @@
 
 .bullets {
     padding-left: 8px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .point {
@@ -67,6 +47,6 @@
 }
 
 .point:before {
-    content: "∙";
+    content: "-";
     padding-right: 2px;
 }

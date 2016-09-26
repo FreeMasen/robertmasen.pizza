@@ -1,1 +1,12 @@
-<h1>Coming Soon!</h1>
+<link rel="stylesheet" type="text/css" href="/css/about.css" />
+<div class="about">
+    <div class="section" ng-repeat="story in $ctrl.life">
+        <h3 class="title">{{ story.title }}</h3>
+        <p ng-if="story.description" class="description">{{ story.desciption }}</p>
+        <ul class="highlights" ng-if="story.highlighs">
+            <li ng-repeat="highlight in story.highlights">
+                <p class="highlight">{{ highlight }}</p>
+            </li>
+        </ul>
+    </div>
+</div>

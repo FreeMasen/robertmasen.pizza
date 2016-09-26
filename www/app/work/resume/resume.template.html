@@ -1,13 +1,5 @@
 <div class="resume container">
     <link rel="stylesheet" type="text/css" href="css/resume.css" />
-
-    <div class="contactInfo">
-        <h1>Robert F. Masen</h1>
-        <div class="extensions">
-            <h6>r.f.masen@gmail.com</h6>
-            <h6>612-293-6532</h6>
-        </div>
-    </div>
     <div class="experience">
         <div class="error" ng-if="$ctrl.hasError" class="jumbotron"><p>{{ $ctrl.errorText }}</p></div>
         <div class="area" ng-repeat="section in $ctrl.qualifications">
@@ -19,7 +11,7 @@
                         <li class="employer">{{ exp.employer }}</li>
                         <li class="timeline">{{ exp.start }} - {{ exp.end }}</li>
                     </ul>
-                    <ul class="points">
+                    <ul class="bullets">
                         <li class="point" ng-repeat="bullet in exp.bullets">{{ bullet }}</li>
                     </ul>
                 </div>

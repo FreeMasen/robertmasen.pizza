@@ -30,6 +30,10 @@
     width: 100%;
 }
 
+.menu-item {
+    display: none;
+}
+
 @media (max-width: 800pt) {
     .navigation .navigation-item * {
         width: 80%;
