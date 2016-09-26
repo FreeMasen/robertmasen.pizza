@@ -1,4 +1,4 @@
-angular.module('portfolio', [
+angular.module('about', [
     'ngRoute',
     'lately'
 ]);

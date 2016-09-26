@@ -1,7 +1,7 @@
 .navigation {
-    border-color: transparent transparent whitesmoke transparent;
-    border-width: 0 0 3px 0;
-    border-style: none none solid none;
+    border-color: whitesmoke transparent;
+    border-width: 3px 0;
+    border-style: solid none;
 }
 
 .navigation .navigation-items {

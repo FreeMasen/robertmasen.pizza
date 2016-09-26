@@ -39,3 +39,14 @@ body * {
     from { opacity: 1; }
     to { opacity: 0; }
 }
+
+.header {
+    width: 100%;
+    margin: auto;
+}
+
+.header > a > img {
+    width: 100%;
+    margin: 0;
+
+}

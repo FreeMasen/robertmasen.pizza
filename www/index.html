@@ -8,32 +8,38 @@
         <script src="node_modules/angular-route/angular-route.js"></script>
         <script src="node_modules/angular-animate/angular-animate.min.js"></script>
         
-
-        
         <script src="app/resume/resume.module.js"></script>
         <script src="app/resume/resume.component.js"></script>
         
         <script src="app/app.module.js"></script>
         <script src="app/app.config.js"></script>
 
-                <script src="app/services/navigation/navigation.module.js"></script>
+        <script src="app/services/navigation/navigation.module.js"></script>
         <script src="app/services/navigation/navigation.service.js"></script>
     </head>
     <body>
         <div class="wrapper">
+            <div class="header">
+                <a href="/"><img src="img/me-text.png" /></a>
+            </div>
             <nav class="navigation">
                 <ul class="navigation-items">
-                    <li class="navigation-item" ng-class="{'active': selectedTab === home}">
-                        <a href="/"><img src="img/home-text.png" class="nav-image" /></a>
+                    <li class="navigation-item">
+                        <a href="#"><img src="img/work-text.png" class="nav-image" /></a>
+                        <ul class="menu">
+                            <li class="menu-item">
+                                <a href="#!/resume"><img src="img/resume.png"></a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#!/portfolio"><img src="img/portfolio.png"></a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="navigation-item">
-                        <a href="#!/resume"><img src="img/work-text.png" class="nav-image" /></a>
+                        <a href="#!/about"><img src="img/about-text.png" class="nav-image" /></a>
                     </li>
                     <li class="navigation-item">
-                        <a href="#!/portfolio"><img src="img/about-text.png" class="nav-image" /></a>
-                    </li>
-                    <li class="navigation-item">
-                        <a href="http://github.com/freemasen"><img src="img/contact-text.png" class="nav-image" /></a>
+                        <a href="#!contanct"><img src="img/contact-text.png" class="nav-image" /></a>
                     </li>
                 </ul>
             </nav>

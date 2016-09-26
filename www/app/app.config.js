@@ -7,17 +7,17 @@ angular.
 
 
                 $routeProvider
-                .when('/resume', {
-                    template: '<resume></resume>'
+                .when('/work', {
+                    template: '<work></work>'
                 })
-                .when('/portfolio', {
-                    template: '<portfolio></portfolio>'
+                .when('/about', {
+                    template: '<about></about>'
                 })
-                .when('/lately', {
+                .when('/work', {
                     template: '<lately></lately>'
                 })
                 .otherwise({
-                    template: '<h1>Under Development</h1>'
+                    template: ''
                 });
                 }
         ]);
