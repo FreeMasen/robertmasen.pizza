@@ -9,7 +9,6 @@ angular.module('about').component('about', {
         .then(function(res){
             console.log('gotten from /about')
             console.log('setting life');
-            console.log(res)
             self.life = res.data;
         }, function(err){
             console.log(err);
