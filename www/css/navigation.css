@@ -15,9 +15,9 @@
 
 .navigation .navigation-item {
         margin: auto;
-        padding: 0;
+        padding: auto 0;
         border: 0;
-        width: 22%;
+        width: 32%;
         box-sizing: content-box;
         background-color: transparent;
 }
@@ -30,12 +30,14 @@
     width: 100%;
 }
 
-.menu-item {
-    display: none;
+.hide {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.5s;
 }
 
-@media (max-width: 800pt) {
-    .navigation .navigation-item * {
-        width: 80%;
-    }
+.show {
+    max-height: 150px;
+    overflow: hidden;
+    transition: 0.5s;
 }

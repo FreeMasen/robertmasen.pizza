@@ -19,7 +19,10 @@
 
         <script src="app/about/about.module.js"></script>
         <script src="app/about/about.component.js"></script>
-        
+
+        <script src="app/work/work.module.js"></script>
+        <script src="app/work/work.component.js"></script>  
+
         <script src="app/app.module.js"></script>
         <script src="app/app.config.js"></script>
     </head>
@@ -28,26 +31,25 @@
             <div class="header">
                 <a href="/"><img src="img/me-text.png" /></a>
             </div>
-            <nav class="navigation">
+            <nav class="navigation" ng-class="{hide: hidden, show: !hidden}" ng-mouseenter="hidden=false" ng-mouseleave="hidden=true">
                 <ul class="navigation-items">
-                    <li class="navigation-item">
-                        <ul class="menu">
-                            <li class="menu-heading">
-                               <a href="#"><img src="img/work-text.png" class="nav-image" /></a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#!/resume"><img src="img/resume-text.png"></a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#!/portfolio"><img src="img/portfolio-text.png"></a>
-                            </li>
-                        </ul>
+                    <li class="navigation-item" >
+                        <a href="#!/work">
+                            <img src="img/work-text.png" class="nav-image" ng-mouseenter="work=true" ng-mouseleave="work=false" />
+                        </a>
                     </li>
                     <li class="navigation-item">
                         <a href="#!/about"><img src="img/about-text.png" class="nav-image" /></a>
                     </li>
                     <li class="navigation-item">
                         <a href="#!contanct"><img src="img/contact-text.png" class="nav-image" /></a>
+                    </li>
+                </ul>
+                <ul ng-if="$ctrl.subNav">
+                    <li ng-repeat="item in $ctrl.subNav" class="navigation-item">
+                        <a ng-href="{{item.link}}">
+                            <img ng-src="{{item.src}}" />
+                        </a>
                     </li>
                 </ul>
             </nav>

@@ -3,6 +3,7 @@ angular.
         config(['$locationProvider', '$routeProvider', 
             function config($locationProvider, $routeProvider) {
                 console.log('Configuring rm');
+                var self = this;
                 $locationProvider.hashPrefix('!');
 
 
@@ -10,8 +11,8 @@ angular.
                 .when('/resume', {
                     template: '<resume></resume>'
                 })
-                .when('/portfolio', {
-                    template: '<portfolio></portfolio>'
+                .when('/work/', {
+                    template: '<work></work>'
                 })
                 .when('/about', {
                     template: '<about></about>'
