@@ -11,9 +11,6 @@ angular.
                 .when('/resume', {
                     template: '<resume></resume>'
                 })
-                .when('/work/', {
-                    template: '<work></work>'
-                })
                 .when('/about', {
                     template: '<about></about>'
                 })

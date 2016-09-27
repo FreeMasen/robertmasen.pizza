@@ -6,7 +6,8 @@ angular.module('work')
             console.log('work controller');
             console.log($location)
             var self = this;
-            self.subNav = [{
+            self.subNav = true;
+            this.options = [{
                 link: "!/work/resume",
                 src: "img/resume-text.png"
             },
@@ -14,7 +15,7 @@ angular.module('work')
                 link: "!/work/portfolio",
                 src: "img/portfolio.text.png"
             }];
-
+            if ($location.path)
             console.log($route)
             // $routeProvider
             // .when('/work/resume', function() {
