@@ -1,6 +1,6 @@
 angular.module('contact')
-    .component({
-        template: 'app/contact/contact.template.html',
+    .component('contact', {
+        templateUrl: 'app/contact/contact.template.html',
         controller: ['$http', function($http){
 
         }]

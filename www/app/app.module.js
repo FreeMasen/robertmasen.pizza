@@ -2,6 +2,8 @@ var app = angular.module('rm', [
     'ngRoute',
     'ngAnimate',
     'about',
-    'work',
-    'navigation'
+    'navigation',
+    'portfolio',
+    'resume',
+    'contact'
     ]);

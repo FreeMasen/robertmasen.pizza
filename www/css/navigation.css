@@ -2,24 +2,24 @@
     border-color: whitesmoke transparent;
     border-width: 3px 0;
     border-style: solid none;
+    position: relative;
 }
 
-.navigation .navigation-items {
+.navigation-items {
         display: flex;
         margin: 0;
         padding: 0;
-        /* For IE, the outcast */
         zoom:1;
         *display: inline;
 }
 
-.navigation .navigation-item {
+.nav-item {
         margin: auto;
         padding: auto 0;
         border: 0;
-        width: 32%;
         box-sizing: content-box;
         background-color: transparent;
+        display: block;
 }
 
 .navigation-item:hover {
@@ -27,17 +27,39 @@
 }
 
 .nav-image {
-    width: 100%;
+    display: block;
+    max-height: 50px;
+    width: auto;
+    height: auto;
 }
 
-.hide {
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.5s;
+.active {
+    filter: invert();
 }
 
-.show {
-    max-height: 150px;
-    overflow: hidden;
-    transition: 0.5s;
+.sub-nav {
+    display: inline;
+}
+
+.sub-nav.ng-enter,
+.sub-nav.ng-leave {
+    z-index: 100%;
+    position: absolute;
+}
+
+.sub-nav.ng-enter {
+    animation: 0.5s roll-in;
+}
+
+.sub-nav.ng-leave {
+    animation: 0.5s roll-out;
+}
+
+@keyframes roll-in {
+    from {transform: translateY(0)}
+    to { transform: translateY(100%)}
+}
+
+@keyframes roll-out {
+    to { transform: translateY(0)}
 }

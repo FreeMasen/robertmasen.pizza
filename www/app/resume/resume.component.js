@@ -1,9 +1,8 @@
 angular.
     module('resume').
     component('resume', {
-        templateUrl: 'app/work/resume/resume.template.html',
+        templateUrl: 'app/resume/resume.template.html',
         controller: ['$http', function resumeController($http) {
-            console.log('resume controller const')
             var self = this;
             
             $http.get('/resume').then(function(res) {

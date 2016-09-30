@@ -5,11 +5,14 @@ var morgan = require('morgan');
 
 var db = new mongo('rm', ['resume']);
 
+var github = require('./src/github.js');
+
+
 var fs = require('fs')
 
 
 app.use(express.static('../www'));
-app.use(morgan('combined'))
+app.use(morgan('dev'))
 
 app.get('/about', (req, res) => {
     console.log('req to /resume');
@@ -39,6 +42,12 @@ app.get('/resume', (req, res) => {
         })
     })
 });
+
+app.get('/portfolio', (req, res) => {
+    github((err, resp, body) => {
+        res.send(body);
+    })
+})
 
 app.listen(8080, (err) => {
     if (err) throw err;

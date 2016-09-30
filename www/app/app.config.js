@@ -1,19 +1,16 @@
 var a = angular.
     module('rm').
-        config(['$locationProvider', '$routeProvider', 'navigationProvider',
-            function config($locationProvider, $routeProvider, navigationProvider) {
-                console.log('Configuring rm');
+        config(['$locationProvider', '$routeProvider',
+            function config($locationProvider, $routeProvider) {
                 var self = this;
                 $locationProvider.hashPrefix('!');
-
-                navigationProvider.$get().start();
                 
                 $routeProvider
-                .when('/resume', {
+                .when('/work/resume', {
                     template: '<resume></resume>'
                 })
-                .when('/portfolio', {
-                    template: '<work></work>'
+                .when('/work/portfolio', {
+                    template: '<portfolio></portfolio>'
                 })
                 .when('/about', {
                     template: '<about></about>'

@@ -1,4 +1,5 @@
-angular.module('about').component('about', {
+angular.module('about')
+    .component('about', {
     templateUrl: 'app/about/about.template.html',
     controller: ['$http', function aboutController($http) {
         console.log('about controller const');
