@@ -4,7 +4,8 @@ var fs = require('fs')
 var db = mongo('rm', ['jobs', 'nonjobs', 'about'])
 
 
-function dropAndInsert(coll) {
+function dropAndInsert(coll, fn) {
+    if (!fn) fn = coll
     console.log('starting dropAndInsert for ' + coll)
     db[coll].drop((err, docs) => {
         if (err) {
@@ -14,7 +15,7 @@ function dropAndInsert(coll) {
             }
         }
         console.log(coll + ' drop complete')
-        fs.readFile('../server/' + coll + '.json', (err, data) => {
+        fs.readFile('../server/' + fn + '.json', (err, data) => {
             if (err) console.log('err reading ' + err)
             var objs = JSON.parse(data);
             db[coll].insert(objs, (err, docs) => {
@@ -25,5 +26,7 @@ function dropAndInsert(coll) {
     })
 }
 
-console.log(db)
 
+const coll = process.argv[2]
+const fn = process.argv[3]
+dropAndInsert(coll, fn)
