@@ -41,4 +41,4 @@ function insert(coll, objs) {
     })
 }
 
-dropAndInsert(coll, fn, drop)
+dropAndInsert(process.argv[2], process.argv[3], process.argv[4])
