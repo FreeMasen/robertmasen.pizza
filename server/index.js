@@ -4,7 +4,7 @@ var mongo = require('mongojs');
 var morgan = require('morgan');
 var favicon = require('express-favicon');
 
-var db = new mongo('rm', ['resume']);
+var db = new mongo('rm', ['jobs', 'nonjobs', 'about']);
 
 var github = require('./src/github.js');
 
@@ -18,32 +18,34 @@ app.use(favicon('../www/img/favicon.png'))
 
 app.get('/about', (req, res) => {
     console.log('req to /resume');
-    fs.readFile('about.json', (err, data) => {
-        if (err) throw err;
-
-        res.send(data.toString('utf8'));
-    });
-});
+    db.about.find({}, (err, docs) => {
+        if (err) throw err
+        res.send(JSON.stringify(docs))
+    })      
+})
 
 app.get('/resume', (req, res) => {
-    fs.readFile('jobs.json', 'utf8', (err, jobsData) => {
-        if (err) throw err;
-        fs.readFile('nonJobs.json', 'utf8', (err, nonJobsData) => {
-            if (err) throw err;
-            var body = {
-                jobs: {
-                name: 'Work Experience',
-                experiences: JSON.parse(jobsData)
-                },
-                nonJobs: {
-                name: 'Non-Work Experience',
-                experiences: JSON.parse(nonJobsData)
+    db.jobs.find({}, (err, docs) => {
+        console.log(docs.length)
+        var filteredJobs = docs.filter((x) => {return x.collection == 'jobs'})
+        console.log(filteredJobs)
+        var filteredNonJobs = docs.filter((x) => {return x.collection == 'nonjobs'})
+        console.log(filteredNonJobs)
+
+        var body = {
+            jobs: { 
+                    name: 'Work Experince',
+                    experiences: filteredJobs
+                    },
+            nonjobs: {
+                    name: 'Non-Work Experience',
+                    experiences: filteredNonJobs
                 }
+
             }
-            res.send(JSON.stringify(body));
-        })
+        res.send(JSON.stringify(body));
     })
-});
+})
 
 app.get('/portfolio', (req, res) => {
     github((err, resp, body) => {
