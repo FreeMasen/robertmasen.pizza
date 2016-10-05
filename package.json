@@ -1,0 +1,20 @@
+{
+  "name": "robertmasen.pizza",
+  "version": "0.9.0",
+  "description": "Personal website of Robert F. Masen",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "cd www && npm install && cd ../server && npm install && node index.js",
+    "test": "mocha server/test "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freemasen/robertmasen.pizza.git"
+  },
+  "author": "Robert Masen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/freemasen/robertmasen.pizza/issues"
+  },
+  "homepage": "https://github.com/freemasen/robertmasen.pizza#readme"
+}
