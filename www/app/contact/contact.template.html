@@ -1,7 +1,28 @@
 <link rel="stylesheet" type="text/css" href="css/contact.css" />
 <div class="contact container">
-    <form class=contact-form>
-        <label></label>
-        <input />
-    </form>
+    <div class="form-container">
+        <form class="contact-form">
+            <input class="form-item" name="name" placeholder="Your Name" type="text" ng-model="$ctrl.user.name" required minlength="3" /><br />
+            <input class="form-item" placeholder="Your Email" name="email" type="email" ng-model="$ctrl.user.email" required minlength="2"/><br />
+            <select class="form-item" placeholder="Your Motivation" name="reason" required ng-model="$ctrl.user.reason">
+                <option value="" selected hidden>Your Motivation</option>
+                <option value="curious">Just curious</option>
+                <option value="employment">I want to hire you</option>
+            </select><br />
+            <div ng-if="$ctrl.user.reason == 'employment'">
+                <input class="form-item" placeholder="Your Company" type="text" name="company" required /><br />
+                <select name="your-roll" class="form-item" required ng-model="$ctrl.user.roll">
+                    <option value="" selected hidden>Your Roll</option>
+                    <option value="manager">Hiring Manager</option>
+                    <option value="recruiter">Recruiter</option>
+                    <option value="individual">Individual in need of a freelancer</option>
+                </select><br />
+            </div>
+            <textarea class="form-item" placeholder="Your message" name="message" rows="10" cols="45" ng-model="$ctrl.user.message" required></textarea><br />
+            <button class="form-item reset" type="reset" ng-click="reset()">Reset</button><button class="form-item send" type="button">Send</button>
+        </form>
+        <div class="description-container"> 
+            <p
+        </div>
+    </div>
 </div>

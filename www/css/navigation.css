@@ -1,28 +1,31 @@
 .navigation {
-    border-color: whitesmoke transparent;
-    border-width: 3px 0;
-    border-style: solid none;
     position: relative;
 }
 
 .navigation-items {
+        border-color: whitesmoke transparent;
+        border-width: 3px 0;
+        border-style: solid none;
         display: flex;
         margin: 0;
-        padding: 0;
         zoom:1;
-        *display: inline;
+}
+
+.holder {
+    width: 90%;
+    margin: auto
 }
 
 .nav-item {
         margin: auto;
-        padding: auto 0;
+        padding: 0;
         border: 0;
         box-sizing: content-box;
         background-color: transparent;
         display: block;
 }
 
-.navigation-item:hover {
+.nav-item:hover {
     background-color: whitesmoke;
 }
 
@@ -37,29 +40,53 @@
     filter: invert();
 }
 
-.sub-nav {
-    display: inline;
+.active:hover {
+    background: #0A0A0A;
 }
 
-.sub-nav.ng-enter,
-.sub-nav.ng-leave {
-    z-index: 100%;
-    position: absolute;
+.hidden {
+    overflow: hidden;
+    height: 0;
+    border: none;
 }
 
 .sub-nav.ng-enter {
-    animation: 0.5s roll-in;
+    animation: 0.3s in;
 }
 
 .sub-nav.ng-leave {
-    animation: 0.5s roll-out;
+    position: absolute;
+    z-index: -1;
+    animation: 0.3s out;
 }
 
-@keyframes roll-in {
-    from {transform: translateY(0)}
-    to { transform: translateY(100%)}
+.sub-nav.navigation-items {
+    border-top: none;
+    padding-left: 8%;
 }
 
-@keyframes roll-out {
-    to { transform: translateY(0)}
+.sub-nav-item {
+    float: left;
+    margin: auto;
+}
+
+.sub-nav-image.placeholder {
+    
+}
+
+.sub-nav-image {
+    width: auto;
+    height: auto;
+    max-height: 30px;
+    margin-right: 10px;
+}
+
+@keyframes in {
+    from { opacity: 0;}
+    to { opacity: 1;}
+}
+
+@keyframes out {
+    from { opacity: 1;}
+    to { opacity: 0;}
 }

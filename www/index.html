@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="rm">
     <head>
+        <meta name="viewport" content="initial-scale=1">
+
         <link rel="stylesheet" type="text/css" href="css/main.css" />
         <link rel="stylesheet" type="text/css" href="css/navigation.css" />
 
@@ -31,18 +33,22 @@
             <div class="header">
                 <a href="/"><img src="img/me-text.png" /></a>
             </div>
-            <div class="navigation">
-                <ul class="navigation-items" ng-controller="navController">
+            <div class="navigation" ng-controller="navController">
+                <ul class="navigation-items">
                     <li ng-repeat="button in elements" class="nav-item" ng-class="{ active: isSelected(button.name)}">
                         <a ng-href="{{ button.href }}">
                             <img ng-src="{{ button.src }}" class="nav-image"/>
                         </a>
                     </li>
                 </ul>
-                <ul class="sub-nav" ng-if="isSub == true">
-                    <li class="sub-nav-item" ng-repeat="sub in subNav" ng-class="{active: isSelected(button.name)}"a>
-                        <a ng-href="{{ sub.href }}"><img ng-src="{{ sub.src }}" /></a>
+                <ul class="sub-nav navigation-items" ng-if="isSub">
+                    <li class="nav-item sub-nav-item" ng-repeat="sub in subNav" ng-class="{active: isSelected(sub.name), placeholder: sub.name == 'empty'}"a>
+                        <a ng-href="{{ sub.href }}" ng-if="sub.name != 'empty'">
+                            <img ng-src="{{ sub.src }}" class="sub-nav-image"/>
+                        </a>
+                    </li>
                 </ul>
+                </div>
             </div>
             <div class="view-container" >
                 <div ng-view class="view-frame"></div>

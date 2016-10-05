@@ -1,0 +1,45 @@
+.form-container {
+    width: 90%;
+    margin-left: 10%;
+
+}
+
+.contact-form {
+    width: 90%;
+}
+
+.form-item {
+    border: 1px whitesmoke solid;
+    border-radius: inherit;
+    height: 50px;
+    width: 80%;
+    font-size: 18pt;
+    margin: 5px;
+}
+
+.ng-invalid.ng-touched {
+    background: #ef4036;
+}
+
+.ng-valid.ng-touched {
+    background: #00aded;
+}
+
+
+textarea.form-item {
+    height: 200px;
+}
+
+button.form-item {
+    width: 40%;
+    font-weight: bold;
+    color: white;
+}
+
+.form-item.reset {
+    background: #ef4036;
+}
+
+.form-item.send {
+    background: #00aded;
+}

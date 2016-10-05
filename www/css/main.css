@@ -4,8 +4,20 @@ p {
     border: 0;
 }
 
-body * {
+body *{
     list-style: none;
+    font-family: archer;
+    font-weight: 100;
+}
+
+ul {
+    -webkit-padding-start: 0;
+    -webkit-margin-before: -;
+}
+
+@font-face {
+    font-family: "Archer";
+    src: url('../fonts/Archer-Book-Pro.otf')
 }
 
 .view-container {
@@ -21,11 +33,11 @@ body * {
 }
 
 .view-frame.ng-enter {
-    animation: 0.5s in;
+    animation: 0.2s in;
 }
 
 .view-frame.ng-leave {
-    animation: 0.5s out;
+    animation: 0.2s out;
 }
 
 @keyframes in {
@@ -35,7 +47,7 @@ body * {
 
 @keyframes out {
     from { opacity: 1;}
-    to { opacity: 0;}
+    to { opacity: 0; }
 }
 
 .header {
@@ -53,7 +65,7 @@ body * {
     width: 90%;
     border-color: whitesmoke;
     border-width: 2px;
-    border-radius: 2%;
+    border-radius: 5px;
     border-style: solid;
     margin: 5px auto;
 }

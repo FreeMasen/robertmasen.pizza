@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var mongo = require('mongojs');
 var morgan = require('morgan');
+var favicon = require('express-favicon');
 
 var db = new mongo('rm', ['resume']);
 
@@ -13,6 +14,7 @@ var fs = require('fs')
 
 app.use(express.static('../www'));
 app.use(morgan('dev'))
+app.use(favicon('../www/img/favicon.png'))
 
 app.get('/about', (req, res) => {
     console.log('req to /resume');
