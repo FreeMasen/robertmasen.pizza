@@ -6,5 +6,4 @@ jsconfig.json
 
 .vscode
 
-**.json
 .DS_Store
