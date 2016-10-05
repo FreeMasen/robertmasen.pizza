@@ -4,29 +4,45 @@ var fs = require('fs')
 var db = mongo('rm', ['jobs', 'nonjobs', 'about'])
 
 
-function dropAndInsert(coll, fn) {
+function dropAndInsert(coll, fn, drop) {
     if (!fn) fn = coll
-    console.log('starting dropAndInsert for ' + coll)
-    db[coll].drop((err, docs) => {
+    if (drop) {
+        dropColl(coll, fn)
+    } else {
+        read(coll, fn)
+    }
+}
+
+function dropColl(coll, fn) {
+    db[coll].drop((err) => {
         if (err) {
-            if (!err.code == 26) {
-                console.log('error dropping ' + err.code)
+            if (err.code != 26) {
                 throw err
             }
         }
-        console.log(coll + ' drop complete')
-        fs.readFile('../server/' + fn + '.json', (err, data) => {
-            if (err) console.log('err reading ' + err)
-            var objs = JSON.parse(data);
-            db[coll].insert(objs, (err, docs) => {
-                if (err) throw err
-                console.log(coll + ' insert complete')
-            })
-        })
+        read(coll, fn)
+    })
+}
+
+function read(coll, fn) {
+    fs.readFile(fn, 'utf8', (err, data) => {
+        console.log(err)
+        console.log(data)
+        var objs = JSON.parse(data)
+        insert(coll, objs)
+    })
+}
+
+function insert(coll, objs) {
+    db[coll].insert(objs, (err) => {
+        if (err) throw err
+        process.exit(0)
     })
 }
 
 
 const coll = process.argv[2]
 const fn = process.argv[3]
-dropAndInsert(coll, fn)
+const drop = process.argv[4]
+console.log(drop)
+dropAndInsert(coll, fn, drop)
