@@ -1,8 +1,9 @@
-var express = require('express');
-var app = express();
-var mongo = require('mongojs');
-var morgan = require('morgan');
-var favicon = require('express-favicon');
+var express = require('express')
+var app = express()
+var mongo = require('mongojs')
+var morgan = require('morgan')
+var favicon = require('express-favicon')
+const compression = require('compression')
 
 var db = new mongo('rm', ['jobs', 'nonjobs', 'about']);
 
@@ -11,7 +12,7 @@ var github = require('./src/github.js');
 
 var fs = require('fs')
 
-
+app.use(compression())
 app.use(express.static('../www'));
 app.use(morgan('dev'))
 app.use(favicon('../www/img/favicon.png'))
