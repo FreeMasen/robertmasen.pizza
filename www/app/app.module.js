@@ -5,5 +5,5 @@ var app = angular.module('rm', [
     'navigation',
     'portfolio',
     'resume',
-    'contact'
+    'contact',
     ]);

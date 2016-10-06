@@ -1,4 +1,4 @@
 angular.module('navigation', [
     'ngRoute',
-    'ngAnimate'
+    'ngAnimate',
 ]);

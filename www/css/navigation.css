@@ -20,9 +20,14 @@
         margin: auto;
         padding: 0;
         border: 0;
-        box-sizing: content-box;
         background-color: transparent;
         display: block;
+
+
+}
+
+@media (max-width: 800px) {
+    .
 }
 
 .nav-item:hover {
@@ -68,10 +73,6 @@
 .sub-nav-item {
     float: left;
     margin: auto;
-}
-
-.sub-nav-image.placeholder {
-    
 }
 
 .sub-nav-image {

@@ -19,7 +19,7 @@
             <div class="header">
                 <a href="/"><img src="img/me-text.png" /></a>
             </div>
-            <div class="navigation" ng-controller="navController">
+            <div class="navigation " ng-controller="navController">
                 <ul class="navigation-items">
                     <li ng-repeat="button in elements" class="nav-item" ng-class="{ active: isSelected(button.name)}">
                         <a ng-href="{{ button.href }}">
@@ -28,7 +28,7 @@
                     </li>
                 </ul>
                 <ul class="sub-nav navigation-items" ng-if="isSub">
-                    <li class="nav-item sub-nav-item" ng-repeat="sub in subNav" ng-class="{active: isSelected(sub.name), placeholder: sub.name == 'empty'}"a>
+                    <li class="nav-item sub-nav-item" ng-repeat="sub in subNav" ng-class="{active: isSelected(sub.name)}"a>
                         <a ng-href="{{ sub.href }}" ng-if="sub.name != 'empty'">
                             <img ng-src="{{ sub.src }}" class="sub-nav-image"/>
                         </a>
@@ -44,6 +44,7 @@
         <script src="node_modules/angular/angular.min.js"></script>
         <script src="node_modules/angular-route/angular-route.js"></script>
         <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+        <script src="node_modules/angular-touch/angular-touch.min.js"></script>
 
         <script src="app/navigation/navigation.module.js"></script>
         <script src="app/navigation/navigation.controller.js"></script>
