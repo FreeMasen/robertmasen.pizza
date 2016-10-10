@@ -12,7 +12,7 @@ body *{
 
 ul {
     -webkit-padding-start: 0;
-    -webkit-margin-before: -;
+    -webkit-margin-before: 0;
 }
 
 @font-face {
@@ -22,6 +22,7 @@ ul {
 
 .view-container {
     position: relative;
+    z-index: 10;
 }
 
 .view-frame.ng-enter,

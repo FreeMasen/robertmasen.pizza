@@ -1,14 +1,20 @@
-.navigation {
-    position: relative;
+.nav-bar {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-direction: row;
+    border-style: solid none;
+    border-color: whitesmoke;
+    border-width: 2px;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
-.navigation-items {
-        border-color: whitesmoke transparent;
-        border-width: 3px 0;
-        border-style: solid none;
-        display: flex;
-        margin: 0;
-        zoom:1;
+.item-list {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
 }
 
 .holder {
@@ -16,78 +22,63 @@
     margin: auto
 }
 
-.nav-item {
-        margin: auto;
-        padding: 0;
-        border: 0;
-        background-color: transparent;
-        display: block;
-
-
+.nav-link {
+    text-decoration: none;
+    color: #878d90;
+    font-family: archer-light;
+    font-size: 5vw;
 }
 
-@media (max-width: 800px) {
-    .
+.sub-nav .nav-item .nav-link {
+    font-size: 3vw;
 }
 
 .nav-item:hover {
     background-color: whitesmoke;
 }
 
-.nav-image {
-    display: block;
-    max-height: 50px;
-    width: auto;
-    height: auto;
-}
-
 .active {
-    filter: invert();
+    color: #cc6959;
 }
 
-.active:hover {
-    background: #0A0A0A;
+@font-face {
+    font-family: "archer-light";
+    src: url('../fonts/Archer-Light-Pro.otf')
 }
 
-.hidden {
-    overflow: hidden;
-    height: 0;
-    border: none;
+@font-face {
+    font-family: "archer-hairline";
+    src: url('../fonts/Archer-Hairline-Pro.otf')
 }
 
-.sub-nav.ng-enter {
-    animation: 0.3s in;
+.sub-container.hidden {
+    display: none;
+    transition: 1s roll-in;
 }
 
-.sub-nav.ng-leave {
-    position: absolute;
-    z-index: -1;
-    animation: 0.3s out;
+.sub-container {
+    position: absolute;;
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
+    border-width: 0 2px;
+    border-color: whitesmoke;
+    border-style: solid;
+    z-index: 100;
+    
 }
 
-.sub-nav.navigation-items {
-    border-top: none;
-    padding-left: 8%;
+.sub-item {
+    border-bottom: 2px solid whitesmoke;
+    background: white;
 }
 
-.sub-nav-item {
-    float: left;
-    margin: auto;
+.sub-item-link {
+    position: relative;
+
 }
 
-.sub-nav-image {
-    width: auto;
-    height: auto;
-    max-height: 30px;
-    margin-right: 10px;
-}
-
-@keyframes in {
-    from { opacity: 0;}
-    to { opacity: 1;}
-}
-
-@keyframes out {
-    from { opacity: 1;}
-    to { opacity: 0;}
+@keyframes roll-in {
+    from: {  opacity: 0 }
+    to: { opacity: 1 }
 }

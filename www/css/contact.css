@@ -18,11 +18,11 @@
 }
 
 .ng-invalid.ng-touched {
-    background: #ef4036;
+    background: #cc6959;
 }
 
 .ng-valid.ng-touched {
-    background: #00aded;
+    background: #0ea2cb;
 }
 
 

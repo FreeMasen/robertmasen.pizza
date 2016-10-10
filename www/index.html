@@ -11,7 +11,7 @@
         <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
         <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="theme-color" content="#ffffff">
-
+        <script src="node_modules/angular/angular.min.js"></script>
 
     </head>
     <body>
@@ -20,28 +20,32 @@
                 <a href="/"><img src="img/me-text.png" /></a>
             </div>
             <div class="navigation " ng-controller="navController">
-                <ul class="navigation-items">
-                    <li ng-repeat="button in elements" class="nav-item" ng-class="{ active: isSelected(button.name)}">
-                        <a ng-href="{{ button.href }}">
-                            <img ng-src="{{ button.src }}" class="nav-image"/>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="sub-nav navigation-items" ng-if="isSub">
-                    <li class="nav-item sub-nav-item" ng-repeat="sub in subNav" ng-class="{active: isSelected(sub.name)}"a>
-                        <a ng-href="{{ sub.href }}" ng-if="sub.name != 'empty'">
-                            <img ng-src="{{ sub.src }}" class="sub-nav-image"/>
-                        </a>
-                    </li>
-                </ul>
+                <div class="nav-bar">
+                    <div ng-repeat="button in elements" class="nav-item">
+                        <div class="item-list">
+                            <div class="item-container" ng-class="{ active: isSelected(button.name)}" ng-mouseover="highlight(button.name)">
+                                <a ng-href="{{ button.link.href }}" class="nav-link" >{{ button.link.display }}</a>
+                                <div class="sub-container" ng-class="{ hidden: highlighted != button.name }">
+                                    <div ng-repeat="sub in button.subs" class="sub-item nav-item" >
+                                        <a ng-href="{{ sub.href }}" class="sub-item-link nav-link" ng-class="{active: isSelected(sub.name)}">{{ sub.display }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="sub-nav nav-bar" ng-if="subNav.length > 0">
+                    <div class="nav-item" ng-repeat="sub in subNav">
+                        <a ng-href="{{ sub.href }}" class="nav-link" >{{ sub.name }}</a>
+                    </div>
                 </div>
             </div>
             <div class="view-container" >
                 <div ng-view class="view-frame"></div>
             </div>
-
         </div>
-        <script src="node_modules/angular/angular.min.js"></script>
+        
         <script src="node_modules/angular-route/angular-route.js"></script>
         <script src="node_modules/angular-animate/angular-animate.min.js"></script>
         <script src="node_modules/angular-touch/angular-touch.min.js"></script>
