@@ -4,15 +4,15 @@
   "description": "Personal website of Robert F. Masen",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && bower install && cd server && node index.js",
+    "start": "npm install && bower install && node index.js",
     "test": "mocha server/test "
   },
   "dependencies": {
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "express": "^4.14.0",
-    "mongojs": "2.4.0",
-    "morgan": "1.7.0",
+    "mongojs": "^2.4.0",
+    "morgan": "^1.7.0",
     "request": "^2.75.0"
   },
   "devDependencies": {
