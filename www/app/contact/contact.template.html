@@ -1,28 +1,28 @@
 <link rel="stylesheet" type="text/css" href="css/contact.css" />
 <div class="contact container">
+    <div ng-if="$ctrl.response.length > 0" class="feedback-container">
+        <span class="feedback">{{ $ctrl.response }}</span>
+    </div>
     <div class="form-container">
-        <form class="contact-form" name="$ctrl.contact">
-            <input class="form-item" name="name" placeholder="Your Name" type="text" ng-model="$ctrl.user.name" required minlength="3" /><br />
-            <input class="form-item" placeholder="Your Email" name="email" type="email" ng-model="$ctrl.user.email" required minlength="2"/><br />
-            <select class="form-item" placeholder="Your Motivation" name="reason" required ng-model="$ctrl.user.reason">
+        <form class="contact-form" name="$ctrl.contact" ng-submit="$ctrl.send()">
+            <input class="form-item" name="name" placeholder="Your Name" type="text" ng-model="$ctrl.message.name" required /><br />
+            <input class="form-item" placeholder="Your Email" name="email" type="email" ng-model="$ctrl.message.email" required minlength="2"/><br />
+            <select class="form-item" placeholder="Your Motivation" name="reason" required ng-model="$ctrl.message.reason">
                 <option value="" selected hidden>Your Motivation</option>
                 <option value="curious">Just curious</option>
                 <option value="employment">I want to hire you</option>
             </select><br />
-            <div ng-if="$ctrl.user.reason == 'employment'">
-                <input class="form-item" placeholder="Your Company" type="text" name="company" required /><br />
-                <select name="your-roll" class="form-item" required ng-model="$ctrl.user.roll">
+            <div ng-if="$ctrl.message.reason == 'employment'">
+                <input class="form-item" placeholder="Your Company" type="text" name="company" ng-model="$ctrl.message.company" required /><br />
+                <select name="your-roll" class="form-item" required ng-model="$ctrl.message.roll">
                     <option value="" selected hidden>Your Roll</option>
                     <option value="manager">Hiring Manager</option>
                     <option value="recruiter">Recruiter</option>
                     <option value="individual">Individual in need of a freelancer</option>
                 </select><br />
             </div>
-            <textarea class="form-item" placeholder="Your message" name="message" rows="10" cols="45" ng-model="$ctrl.user.message" required></textarea><br />
-            <button class="form-item reset" type="reset" ng-click="$ctrl.reset()">Reset</button><button class="form-item send" ng-click="$ctrl.send()" type="button">Send</button>
+            <textarea class="form-item" placeholder="Your message" name="message" rows="10" cols="45" ng-model="$ctrl.message.content" required></textarea><br />
+            <button class="form-item reset" type="reset" ng-click="$ctrl.reset()">Reset</button><button class="form-item send" type="submit">Send</button>
         </form>
-        <div ng-if="$ctrl.message.length > 0" class="message">
-            {{ $ctrl.message }}
-        </div>
     </div>
 </div>

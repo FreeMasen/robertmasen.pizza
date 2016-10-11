@@ -4,28 +4,32 @@ angular.module('contact')
         controller: ['$http', function($http){
             var self = this;
 
-
-
-            defaultUser = {
+            defaultMessage = {
                 reason: ''
             }
 
-            self.message = '';
+            self.response = ''
             self.send = function() {
                 console.log('send')
-                
-                $http.post('/contact',JSON.stringify(self.user) ,(res) => {
-                    self.message = res.data.message
-                }, (err) => {
-                    self.message = 'error sending your message'
+                $http.post('/contact', JSON.stringify(self.message))
+                .then(function (res) {
+                    console.log('response')
+                    console.log(res.data)
+                    self.response = res.data
+                    self.reset()
+                }, function (err) {
+                    console.log('error')
+                    console.log(err)
+                    self.response = 'error sending your message'
                 })
             }
 
             self.reset = function() {
-                self.user = angular.copy(defaultUser)
+                self.message = angular.copy(defaultMessage)
+                
                 self.contact.$setPristine()
                 self.contact.$setUntouched()
             }
-            self.user = angular.copy(defaultUser)
+            self.user = angular.copy(defaultMessage)
         }]
     });
