@@ -4,13 +4,12 @@
         <meta name="viewport" content="initial-scale=1">
 
         <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <link rel="stylesheet" type="text/css" href="css/navigation.css" />
 
         <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
         <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
         <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="theme-color" content="#ffffff">
+        <meta name="theme-color" content="#f5f5f5">
         <script src="bower/angular/angular.min.js"></script>
 
     </head>
@@ -19,13 +18,14 @@
             <div class="header">
                 <a href="/"><img src="img/me-text.png" /></a>
             </div>
+            <link rel="stylesheet" type="text/css" href="css/navigation.css" />
             <div class="navigation " ng-controller="navController">
                 <div class="nav-bar">
                     <div ng-repeat="button in elements" class="nav-item">
                         <div class="item-list">
                             <div class="item-container" ng-mouseover="highlight(button.name)" ng-mouseleave="highlight()">
                                 <a ng-href="{{ button.link.href }}" class="nav-link" ng-class="{ active: isSelected(button.name)}" >{{ button.link.display }}</a>
-                                <div class="sub-container" ng-class="{ hidden: highlighted != button.name }">
+                                <div class="sub-container" ng-class="{ hidden: highlighted != button.name, shown: highlighted == button.name }">
                                     <div ng-repeat="sub in button.subs" class="sub-item nav-item" >
                                         <a ng-href="{{ sub.href }}" class="sub-item-link nav-link" ng-class="{active: isSelected(sub.name)}">{{ sub.display }}</a>
                                     </div>
