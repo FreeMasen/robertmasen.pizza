@@ -1,0 +1,82 @@
+.portfolio {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+    align-content: space-around;
+}
+
+.container {
+    width: 45%;
+    text-align: center;
+    overflow: scroll;
+}
+
+.container li {
+    width: 98%;
+    background-color: whitesmoke;
+    margin: 5px auto;
+    border-radius: inherit;
+
+}
+
+.name {
+    font-size: 18pt;
+    margin: 0;
+
+}
+
+.time {
+    font-family: archer-hairline;
+    font-size: 10pt;
+    margin-top: -5px;
+}
+
+.commits, .commits-heading {
+    margin-left: 5px;
+    text-align: left;
+}
+
+.commits-heading {
+    font-size: 15pt;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.commit:before {
+    content: '-';
+    padding-left: 2px;
+    
+}
+
+.link {
+    text-decoration: none;
+    color: #000;
+}
+.repo-heading h1{
+    display: inline;
+}
+
+.star {
+    color: goldenrod;
+    font-size: 18pt;
+    text-decoration: none;
+    margin-left: 3px;
+}
+
+.star-container {
+    margin: auto;
+}
+
+.description-heading {
+    margin: 0;
+    text-decoration: underline;
+    text-align: left;
+}
+
+.description {
+    word-wrap: break-word;
+    text-align: left;
+    padding: 1%;
+}

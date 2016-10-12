@@ -1,7 +1,32 @@
-<link rel="stylesheet" type="text/css" hrec="css/portfolio.css">
-<div class="portfolio container">
-    <div class="lately left">
-    </div>
-    <div class="pride right">
-    </div>
+<link rel="stylesheet" type="text/css" href="css/portfolio.css" />
+<div class="portfolio">
+    <ul class="lately container">
+        <h1 class="container-heading">Latest Commits</h1>
+        <li class="event" ng-repeat="event in $ctrl.events">
+            <a ng-href="{{event.repo.url}}" class="link" target="_blank">
+                <small class="time">{{event.time}}</small>
+                <h1 class="name">{{event.repo.name}}</h1>
+            </a>
+            <h3 class="commits-heading">Commits</h3>
+            <ul class="commits">
+                <li class="commit" ng-repeat="msg in event.message">
+                    {{msg}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="repos container">
+        <h1 class="container-heading">My Repos</h1>
+        <li class="repo" ng-repeat="repo in $ctrl.repos">
+            <div class="repo-heading">
+                <a ng-href="{{repo.url}}" class="link" target="_blank">
+                    <h1 class="name">{{repo.name}}</h1> 
+                </a>
+                <a class="star">✪ {{repo.stars}}</a>
+            </div>
+            <span>Language: {{repo.language}}</span>
+            <h3 class="description-heading">Description</h3>
+            <p class="description">{{repo.description}}</p>
+        </li>
+    </ul>
 </div>

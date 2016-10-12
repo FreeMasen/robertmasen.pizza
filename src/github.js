@@ -3,8 +3,12 @@ var mongo = require('mongojs');
 var fs = require('fs');
 var db = mongo('rm', ['tokens']);
 
+let token
 
 function getToken(cb) {
+    if (token) {
+        cb(null, token)
+    }
     db.tokens.findOne({name: "gh"}, (err, doc) => {
         if (err) { 
             cb(err);
@@ -14,36 +18,42 @@ function getToken(cb) {
             cb(new Error('Cound not find gh token'));
             return;
         }
-        cb(null, doc)
+        cb(null, doc.token)
     })
 }
 
 function requestRepoInfo(cb) {
-    getToken((err, doc) => {
+    getToken((err, token) => {
         if (err){
              cb(err)
              return
         }
-        let opts = composeRequestOptions(doc.token)
-        request.get('https://api.github.com/users/freemasen/repos',opts
+        let opts = composeRequestOptions(token)
+        request.get('https://api.github.com/users/freemasen/repos?type=all&sort=created&direction=desc',opts
         , (err, res, body) => {
             if (err) {
                 cb(err);
                 return
             }
-            
-            cb(null, mapRepos(filterRepos(body)))  
+            cb(null, mapRepos(filterRepos(body)))
+
         })
     })
 }
 
+function cleanLink(link) {
+    let first = link.split(';')[0]
+    let end = first.length -2
+    return first.substring(1,end)
+}
+
 function requestEvents(cb) {
-    getToken((err, doc) => {
+    getToken((err, token) => {
         if (err){
             cb(err)
             return
         }
-        let opts = composeRequestOptions(doc.token)
+        let opts = composeRequestOptions(token)
         request('https://api.github.com/users/freemasen/events', opts, (err, res, body) => {
             if (err) {
                 cb(err)
@@ -67,10 +77,15 @@ function composeRequestOptions(token) {
 
 function filterRepos(repos) {
     let parsed = JSON.parse(repos)
-    return parsed.filter((repo) => {
-        return repo.homepage != null &&
-            repo.homepage != ''
-
+    let ordered = parsed.sort((lhs, rhs) => {
+        let lhsTime = new Date(lhs.created_at).getTime() / 1000
+        let rhsTime = new Date(rhs.created_at).getTime() / 1000
+        return rhsTime - lhsTime
+    })
+    return ordered.filter((repo) => {
+        if (repo.name == 'FreeMasen/robertmasen.pizza') console.log(repo)
+        return repo.description != null &&
+            repo.description != ''
     })
 }
 
@@ -81,26 +96,35 @@ function mapRepos(repos) {
             url: repo.html_url,
             mine: repo.owner.login == 'FreeMasen',
             stars: repo.stargazers_count,
-            language: repo.language
+            language: repo.language,
+            description: repo.description
         }
     })
 }
 
 function filterEvents(events) {
-    return events.splice(0, 10)
+    let parsed = JSON.parse(events)
+    let preFiltered = parsed.filter((event) => {
+        return event.type == 'PushEvent'
+    })
+    return preFiltered.splice(0, 10)
 }
 
 function mapEvents(events) {
     return events.map((event) => {
-        return {
-            time: event.created_at,
+        let r = {
+            time: new Date(event.created_at).toLocaleString(),
             repo: {
                 name: event.repo.name.split('/')[1],
-                url: event.repo.url
-            },
-            message: event.commits[0].message,
-            
+                url: 'https://github.com/' + event.repo.name
+            }
         }
+        if (event.payload.commits) {
+            r.message = event.payload.commits.map((commit) => {
+                        return commit.message    
+                        })
+        }
+        return r
     })
 }
 

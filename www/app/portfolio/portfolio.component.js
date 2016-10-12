@@ -5,7 +5,11 @@ angular.module('portfolio')
             var self = this;
             $http.get('/portfolio')
                 .then(function(res) {
-                    self.gh = res.data;
-                }, function(err) {});
+                    console.log(res.data.events)
+                    self.events = res.data.events
+                    self.repos = res.data.repos
+                }, function(err) {
+                    self.feedback = 'Unable to get portfolio information'
+                })
         }]
-    });
+    })

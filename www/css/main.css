@@ -70,3 +70,13 @@ ul {
     border-style: solid;
     margin: 5px auto;
 }
+
+@font-face {
+    font-family: "archer-light";
+    src: url('../fonts/Archer-Light-Pro.otf')
+}
+
+@font-face {
+    font-family: "archer-hairline";
+    src: url('../fonts/Archer-Hairline-Pro.otf')
+}

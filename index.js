@@ -1,4 +1,7 @@
 app = require('./src/configure.js')
+let github = require('./src/github.js')
+let mongo = require('mongojs')
+let db = mongo('rm', ['jobs', 'about', 'contact'])
 
 app.get('/about', (req, res) => {
     console.log('req to /resume');
