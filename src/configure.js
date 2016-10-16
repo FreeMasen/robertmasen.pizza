@@ -11,4 +11,7 @@ app.use(compression({level: 9}))
 const bodyparser = require('body-parser')
 app.use(bodyparser.json())
 
+const minify = require('express-minify')
+app.use(minify())
+
 module.exports = app
