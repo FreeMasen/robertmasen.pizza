@@ -11,9 +11,4 @@ app.use(compression({level: 9}))
 const bodyparser = require('body-parser')
 app.use(bodyparser.json())
 
-const minify = require('express-minify')
-app.use(minify({
-    js_match: new RegExp('.\www\/app|\/www\/bower'),
-}))
-
 module.exports = app
