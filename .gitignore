@@ -8,3 +8,5 @@ jsconfig.json
 .vscode
 
 **.DS_Store
+
+data/**
