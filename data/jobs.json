@@ -1,0 +1,56 @@
+[
+    {
+        "_id": "57f466bbd5586d93f7ff92df",
+        "title": "Business System Consultant",
+        "employer": "Wells Fargo",
+        "start": "October 2015",
+        "end": "Current",
+        "bullets": [
+            "As an opportuninty to learn more about financial industry messaging standards and the applications that my deparment ueses to process them, I was asked to coordinat system integration and user acceptances testing as well as production validation for a suite of 7 applications undergoing quartly Java patches.",
+            "In our 2nd round of Java patch testing, I was frustrated with the 25+ hours it was taking me to create, correctly formatted and unique, trade files for each of the 25 tests I was performing. I created an MS Access application that would gather the required information from TSQL and DB2 datasources and generate these for me, reducing the total time of my testing activites to under 4 hours.",
+            "A member of my team is required to check the health of one of the applications we support hourly and document this check by querying a TSQL database, reading a log file and performing a search in a web application.  I was able to create a Nodejs script that runs at the top of each hour to query the database and parse the text file in an effort to make this process more efficient",
+            "Three or more times a month, an MS Access database that is used as an application launcher becomes corrupted, even implementing daily corrective action to avoid this. I was able to create a working prototype of this using Nodejs, Express and Angular"
+        ],
+        "collection": "jobs"
+    },
+    {
+        "_id": "57f466bbd5586d93f7ff92e0",
+        "title": "Quality Monitor",
+        "employer": "Wells Fargo",
+        "start": "January 2014",
+        "end": "October 2015",
+        "bullets": [
+            "6 Months after starting in the role, my department was transition to another devision of the company, this meant that we lost a large number of resources; most importantly our Database Analyst. I was able to perform my normal duties as wells as provide technical support for a department of 10 using 4 inter-related shared MS Access applications",
+            "In an under resourced department, I was able to develop an MS Access solution for evaluating employee performance. My solution reduced the time spent on this task from 40 hours each month to less than 8 hours each month.",
+            "When a co-worker approached me about a morning load of data was taking as long as an hour, I was able to re-work the MS Access import query to reduce this to under a minute",
+            "After being the only source of technical support for 8 months for these applications, I created a set of documents and workflows to allow any member of my team to navigate common issues",
+            "I was trained over the course of 3 months to pull monthly reporting using a highly technical process. I developed a set of MS Access reports to pull this data quickly and efficently, allowing this task to be performed by almost anyone on my team."
+        ],
+        "collection": "jobs"
+    },
+    {
+        "_id": "57f4670818d7e1987c11852b",
+        "title": "MCTC Software Development Program",
+        "employer": "Education",
+        "start": "January 2014",
+        "end": "Current",
+        "bullets": [
+            "The classes I have as part of this program inclue a course in basic programming concepts taught in Python, practial application building in Visual Basic.NET and C#.NET for windows as well as Swift for iOS, watchOS, tvOS and linux; each one building on the last. By the end of my course in Swift I was able to build applications that take use of location data, Google Calendar and Sign In APIs and even build my own REST API (written in a beta version of Swift 3) that I hosted on a cloud Server. My coursework will continue with a class in Transact SQL, Systems Design, and Agile Methodoligies. My anticipated date of graduation is Decemter 2017",
+            "The program's main goal is to mimic the working environment as much as posslbe, due to that almost all of the classes are taught with a group focus. Due to this I have had the opportunity to use Git as a primary version control system and leverage tools like GitHub and Slack to collaborate with other students."
+        ],
+        "collection": "nonjobs"
+    },
+    {
+        "_id": "57f4670818d7e1987c11852c",
+        "title": "Personal Projects",
+        "employer": "Miscelanous",
+        "start": "2012",
+        "end": "",
+        "bullets": [
+            "In 2012, I got a job working in a 401k call center as a customer service representative. This was a great opportunity at the time as I had just exited 2 years of service with AmierCorps and was having a hard time finding work, however before the end of that year the work would become too tedious to be fulfilling. That is when I stumbled across the book Learn Python the Hard Way by Zed xxx, after finishing this I moved on to Codecademy courses in Ruby, PHP, Python, HTML, CSS and Javascript and Angular. This was just the begining of my programming experience, by 2014 I was enrolled in a software develpment program at the local community college and rarely spending time not learning more about the field.",
+            "After spending time in my software development program building native applications in C# and Swift I started to get frustrated with how limitting this was. Creating apps that were not portable felt clunky and started to get boring. When I voiced this concern to a friend of mine who works in technology operations he encouraged me to explore what Digital Ocean had to offer. On this suggestion I opened an account with them and started managing a Linux 14.01 LTS server. This was eye opening in ways I could never have expected. First, how much more vercitile my applciations could be when I had a server side componenet and didn't have to try and mash all of the UI and 'Business Logic' in the same package. Second, working on developing my skills in writting NGINX configuation files, managing my server's security settings and trying to keep all of the pieces in place so that my servives woudn't become unavailable was extremely rewarding.",
+            "With my new found resource in the cloud, I was able to spend time working on skills that I had let fall by the wayside like writting HTML, CSS and Javascript. With these skills I have been able to build applications (like the one you are reading this on), which is built using Nodejs on the backend and Angular on the front end with MongoDB as a storage solution (sometimes refered to as a MEAN stack). As well as explore new ground like Swift on Linux, virtualization, and containers."
+        ],
+        "collection": "nonjobs"
+    }
+]
