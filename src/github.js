@@ -1,7 +1,7 @@
 var request = require('request');
 var mongo = require('mongojs');
 var fs = require('fs');
-var db = mongo('rm', ['tokens']);
+var db = mongo('rm', ['tokens', 'github']);
 
 let token
 

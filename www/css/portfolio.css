@@ -12,60 +12,65 @@
     height: 1000px;
     text-align: center;
     overflow-y: scroll;
+    min-width: 200px;
 }
 
-.container li {
-    width: 98%;
+.container-heading {
+    font-size: 5vw;
+}
+
+.container-heading a {
+    text-decoration: none;
+    color: inherit;
+    
+}
+
+.list-item {
     background-color: whitesmoke;
-    margin: 5px auto;
+    margin: 5px;
     border-radius: inherit;
 }
 
-.container-heading a{
+.supp {
+    font-family: archer-hairline;
+    font-size: 1vw;
+    display: block;
+}
+
+.sub-heading {
+    text-decoration: underline;
+    text-align: left;
+    margin: 0 0 2px 0;
+    font-size: 2vw;
+}
+
+.heading {
+    font-size: 2.5vw;
+    margin: 0 auto;
     text-decoration: none;
     color: inherit;
-}
-
-.name {
-    font-size: 18pt;
-    margin: 0;
-
-}
-
-.time {
-    font-family: archer-hairline;
-    font-size: 10pt;
-    margin-top: -5px;
-}
-
-.commits, .commits-heading {
-    margin-left: 5px;
-    text-align: left;
-}
-
-.commits-heading {
-    font-size: 15pt;
-    text-decoration: underline;
-    margin: 0;
+    height: min-content;
 }
 
 .commit:before {
     content: '-';
     padding-left: 2px;
-    
+}
+
+.commit {
+    font-size: 2vw;
+    margin-left: 2px;
+    text-align: left;
 }
 
 .link {
     text-decoration: none;
     color: #000;
 }
-.repo-heading h1{
-    display: inline;
-}
 
 .star {
     color: goldenrod;
-    font-size: 18pt;
+    font-size: 2.5vw;
     text-decoration: none;
     margin-left: 3px;
 }
@@ -78,10 +83,31 @@
     margin: 0;
     text-decoration: underline;
     text-align: left;
+    font-size: 2.5vw;
 }
 
 .description {
     word-wrap: break-word;
     text-align: left;
     padding: 1%;
+    font-size: 1.5vw;
+    padding: 0;
+}
+
+@media (max-width: 800px) {
+
+    .heading {
+        font-size: 3vw;
+    }
+    .sub-heading {
+        font-size: 2.5vw;
+    }
+
+    .description {
+        font-size: 2vw;
+    }
+
+    .supp {
+        font-size: 1.5vw;
+    }
 }

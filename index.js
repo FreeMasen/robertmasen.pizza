@@ -38,9 +38,16 @@ app.get('/resume', (req, res) => {
 
 app.get('/portfolio', (req, res) => {
     github.events((err, events) => {
-        if (err) throw err
-        github.repos((err, repos) => {
-            if (err) throw err
+        if (err) {
+            res.status(403).send()
+            console.log(err)
+            return
+        }
+        github.repos((err2, repos) => {
+            if (err2) {
+                res.send(403).send()
+                return
+            }
             let r = {
                 repos: repos,
                 events: events
