@@ -101,7 +101,6 @@ function filterRepos(repos) {
 }
 
 function mapRepos(repos) {
-    require('fs').writeFileSync('reposFromMongo.json', JSON.stringify(repos))
     return repos.map((repo) => {
         return {
             name: repo.name,
