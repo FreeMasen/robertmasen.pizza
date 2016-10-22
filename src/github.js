@@ -1,7 +1,7 @@
 var request = require('request');
 var mongo = require('mongojs');
 var fs = require('fs');
-var db = mongo('rm', ['tokens', 'github']);
+var db = mongo('rm', ['tokens', 'events', 'repos']);
 
 let token
 
@@ -25,17 +25,22 @@ function getToken(cb) {
 function requestRepoInfo(cb) {
     getToken((err, token) => {
         if (err){
-             cb(err)
-             return
+             return cb(err)
         }
         let opts = composeRequestOptions(token)
         request.get('https://api.github.com/users/freemasen/repos?type=all&sort=created&direction=desc',opts
         , (err, res, body) => {
             if (err) {
-                cb(err);
-                return
+                db.repos.find({}, (err, docs) => {
+                    if (err) return cb(err)
+                    return cb(null, mapRepos(filterRepos(docs)))
+                })
+            } else {
+                let repos = mapRepos(filterRepos(body))
+                
+                cache(body, 'repos')
+                return cb(null, repos)
             }
-            cb(null, mapRepos(filterRepos(body)))
 
         })
     })
@@ -56,10 +61,17 @@ function requestEvents(cb) {
         let opts = composeRequestOptions(token)
         request('https://api.github.com/users/freemasen/events', opts, (err, res, body) => {
             if (err) {
-                cb(err)
-                return
+                db.events.find({}, (err, docs) => {
+                    if (err) {
+                         return cb(err)
+                    }   
+                    return cb(null, mapEvents(filterEvents(docs)))
+                })
+            } else {
+                let events = mapEvents(filterEvents(body))
+                cache(body, 'events')
+                return cb(null, events)
             }
-            cb(null, mapEvents(filterEvents(body)))
         })
     })
 }
@@ -76,20 +88,20 @@ function composeRequestOptions(token) {
 } 
 
 function filterRepos(repos) {
-    let parsed = JSON.parse(repos)
+    let parsed = parse(repos)
     let ordered = parsed.sort((lhs, rhs) => {
         let lhsTime = new Date(lhs.created_at).getTime() / 1000
         let rhsTime = new Date(rhs.created_at).getTime() / 1000
         return rhsTime - lhsTime
     })
     return ordered.filter((repo) => {
-        if (repo.name == 'FreeMasen/robertmasen.pizza') console.log(repo)
         return repo.description != null &&
             repo.description != ''
     })
 }
 
 function mapRepos(repos) {
+    require('fs').writeFileSync('reposFromMongo.json', JSON.stringify(repos))
     return repos.map((repo) => {
         return {
             name: repo.name,
@@ -103,11 +115,23 @@ function mapRepos(repos) {
 }
 
 function filterEvents(events) {
-    let parsed = JSON.parse(events)
+    let parsed = parse(events)
+    if (!events) {
+        console.log('events were undefined')
+        console.log(events)
+        parsed = []
+    }
     let preFiltered = parsed.filter((event) => {
         return event.type == 'PushEvent'
     })
     return preFiltered.splice(0, 10)
+}
+
+function parse(response) {
+    if (typeof response == 'string') {
+        return JSON.parse(response)
+    }
+    return response
 }
 
 function mapEvents(events) {
@@ -127,6 +151,33 @@ function mapEvents(events) {
         return r
     })
 }
+
+function cache(content, collection) {
+    let parsed = parse(content)
+    db[collection].find({}, (err, docs) => {
+        let ids = []
+        if (docs) {
+            let ids = docs.map((doc) => {
+                return doc._id
+            })
+        }
+        db[collection].save(parsed, (err) => {
+            if (!err && ids.length > 0) {
+                db[collection].remove({_id: {$in: ids}}, (err) => {
+                    if (err) console.log(err)
+                    console.log('completed remove')
+                })
+            } else if (err) {
+                console.log('error saving to collection')
+                console.log(err)
+            } else {
+                console.log('nothing to remove...')
+            }
+        })
+    })
+}
+
+
 
 module.exports = {
     repos: requestRepoInfo,

@@ -45,7 +45,8 @@ app.get('/portfolio', (req, res) => {
         }
         github.repos((err2, repos) => {
             if (err2) {
-                res.send(403).send()
+                res.status(403).send()
+                console.log(err2)
                 return
             }
             let r = {
