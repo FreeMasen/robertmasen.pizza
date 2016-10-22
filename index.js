@@ -1,7 +1,8 @@
 app = require('./src/configure.js')
 let github = require('./src/github.js')
+let messages = require('./src/messages.js')
 let mongo = require('mongojs')
-let db = mongo('rm', ['jobs', 'about', 'contact'])
+let db = mongo('rm', ['jobs', 'about'])
 
 app.get('/about', (req, res) => {
     console.log('req to /resume');
@@ -59,12 +60,29 @@ app.get('/portfolio', (req, res) => {
 })
 
 app.post('/contact', (req, res) => {
-    db.contact.insert(req.body, (err) => {
+    messages.new(req.body, (err) => {
         if (err) {
-            res.status(500).send()
-        } else {
-            res.send('Message Sent')
+            return res.status(400).send()
         }
+        res.send()
+    })
+})
+
+app.get('/contact', (req, res) => {
+    messages.get((messages, err) => {
+        if (err) {
+            return res.status(400).send()
+        }
+        res.send(messages)
+    })
+})
+
+app.put('/contact', (req, res) => {
+    messages.read(req.body.id, (err) => {
+        if (err) {
+            return res.status(400).send()
+        }
+        res.send()
     })
 })
 
