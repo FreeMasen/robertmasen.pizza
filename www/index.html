@@ -20,7 +20,7 @@
             </div>
             <link rel="stylesheet" type="text/css" href="css/navigation.css" />
             <div class="navigation " ng-controller="navController">
-                <div class="nav-bar">
+                <div class="nav-bar" ng-if="!printing">
                     <div ng-repeat="button in elements" class="nav-item">
                         <div class="item-list">
                             <div class="item-container" ng-mouseover="highlight(button.name)" ng-mouseleave="highlight()">

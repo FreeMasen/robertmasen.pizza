@@ -24,8 +24,9 @@ angular.module('navigation')
             link: {href: '#!/contact',
                 display: 'Contact'}
             }        
-            $scope.endpoint = [];
+        $scope.endpoint = [];
         $scope.isSub = false
+        $scope.printing = false
         $scope.elements = [home, work, about, contact]
         $rootScope.$on('$locationChangeSuccess', function() {
                 updateNav();
@@ -36,7 +37,17 @@ angular.module('navigation')
         }
 
         function updateNav() {
+            console.log($location.path())
             $scope.endpoint = $location.path().split('/').splice(1);
+            console.log($scope.endpoint)
+            if ($scope.endpoint.includes('print')) {
+                console.log('printing')
+                $scope.printing = true
+            } else {
+                console.log('not-printing')
+                $scope.printing = false
+            }
+            
             if ($scope.endpoint.length < 1 ||
                 $scope.endpoint[0] == ''){
                 $scope.endpoint = ['home']

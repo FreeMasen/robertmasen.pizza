@@ -6,7 +6,7 @@ var a = angular.
                 $locationProvider.hashPrefix('!');
                 
                 $routeProvider
-                .when('/work/resume', {
+                .when('/work/resume/:print?', {
                     template: '<resume></resume>'
                 })
                 .when('/work/portfolio', {

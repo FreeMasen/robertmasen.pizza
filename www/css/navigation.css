@@ -68,6 +68,11 @@
 
 }
 
+.printing {
+    overflow: hidden;
+    height: 0;
+}
+
 @keyframes roll-in {
     from {  opacity: 0 }
     to { opacity: 1 }
