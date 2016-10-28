@@ -8,13 +8,15 @@
     "test": "mocha tests "
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "express": "^4.14.0",
+    "express-minify": "^0.2.0",
     "mongojs": "^2.4.0",
     "morgan": "^1.7.0",
-    "request": "^2.75.0",
-    "express-minify": "^0.2.0"
+    "prompt": "^1.0.0",
+    "request": "^2.75.0"
   },
   "devDependencies": {
     "mocha": "^3.1.0"

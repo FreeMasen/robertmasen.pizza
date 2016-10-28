@@ -68,24 +68,6 @@ app.post('/contact', (req, res) => {
     })
 })
 
-app.get('/contact', (req, res) => {
-    messages.get((messages, err) => {
-        if (err) {
-            return res.status(400).send()
-        }
-        res.send(messages)
-    })
-})
-
-app.put('/contact', (req, res) => {
-    messages.read(req.body.id, (err) => {
-        if (err) {
-            return res.status(400).send()
-        }
-        res.send()
-    })
-})
-
 app.listen(8080, (err) => {
     if (err) {
         throw err;
