@@ -5,6 +5,7 @@
 .section-header {
     font-size: 24pt;
     font-weight: bold;
+    margin: 5px 0 2px
 }
 
 .title {
@@ -45,4 +46,8 @@
 .point:before {
     content: "-";
     padding-right: 2px;
+}
+
+.exp-list {
+    margin-bottom: 2px;
 }
