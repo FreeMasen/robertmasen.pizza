@@ -1,6 +1,5 @@
 app = require('./src/configure.js')
 let github = require('./src/github.js')
-let messages = require('./src/messages.js')
 let mongo = require('mongojs')
 let db = mongo('rm', ['jobs', 'about'])
 
