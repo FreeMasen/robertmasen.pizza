@@ -24,7 +24,7 @@ app.get('/resume', (req, res) => {
 
         let body = {
                 jobs: { 
-                    name: 'Work Experince',
+                    name: 'Work Experience',
                     experiences: filteredJobs
                     },
                 nonjobs: {
