@@ -1,18 +1,54 @@
 app = require('./src/configure.js')
 let github = require('./src/github.js')
 let mongo = require('mongojs')
-let db = mongo('rm', ['jobs', 'about'])
+let db = mongo('rm.p:superPowers@localhost/rm', ['jobs', 'about'])
+
+function removeAuthentication() {
+    db = mongo('rm', ['jobs', 'about'])
+}
+
+db.on('error', _ => {
+
+})
 
 app.get('/about', (req, res) => {
     console.log('req to /resume');
-    db.about.find({}, (err, docs) => {
-        if (err) throw err
+    let retried = false
+    let callback = function(err, docs) {
+        if (err) {
+            if (err.code == 18) {
+                removeAuthentication()
+                if (!retried) {
+                    console.log('Unable to request because of auth, retrying')
+                    return findRequest('about', callback)
+                } else {
+                    console.log('error after retry',err)
+                    return res.status(404).send()
+                }
+            }
+        }
         res.send(JSON.stringify(docs))
-    })      
+    }
+    findRequest('about', callback)
 })
 
 app.get('/resume', (req, res) => {
-    db.jobs.find({}, (err, docs) => {
+    console.log('/resume request')
+    let retried = false
+    let callback = function(err, docs) {
+        console.log('resume callback')
+        if (err) {
+            if (err.code == 18) {
+                removeAuthentication()
+                if (!retried) {
+                    console.log('Unable to request because of auth, retrying')
+                    return findRequest('jobs', callback)
+                } else {
+                    console.log('error after retry',err)
+                    return res.status(404).send()
+                }
+            }
+        }
         let filteredJobs = docs.filter((x) => {
             return x.collection == 'jobs'
         })
@@ -33,8 +69,15 @@ app.get('/resume', (req, res) => {
             }
 
         res.send(JSON.stringify(body));
-    })
+    }
+    findRequest('jobs', callback)
 })
+
+function findRequest(collection, cb) {
+    db[collection].find({}, (err, docs) => {
+        return cb(err, docs)
+    })
+}
 
 app.get('/portfolio', (req, res) => {
     github.events((err, events) => {
