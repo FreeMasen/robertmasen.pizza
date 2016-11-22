@@ -1,18 +1,27 @@
 var request = require('request');
 var mongo = require('mongojs');
 var fs = require('fs');
-var db = mongo('rm', ['tokens', 'events', 'repos']);
+var db = mongo('rm.p:superPowers@localhost/rm', ['tokens']);
+
+//for use if Gighub goes down
+var fallbackCache = {}
 
 let token
 
+db.on('error', _ => {
+
+})
+
 function getToken(cb) {
+    console.log('get token')
     if (token) {
         cb(null, token)
     }
     db.tokens.findOne({name: "gh"}, (err, doc) => {
         if (err) { 
-            cb(err);
-            return;
+            console.log('mongo error, retrying')
+            db = mongo('rm', ['tokens'])
+            return getToken(cb)
         }
         if (!doc.token) {
             cb(new Error('Cound not find gh token'));
@@ -31,10 +40,10 @@ function requestRepoInfo(cb) {
         request.get('https://api.github.com/users/freemasen/repos?type=all&sort=created&direction=desc',opts
         , (err, res, body) => {
             if (err) {
-                db.repos.find({}, (err, docs) => {
-                    if (err) return cb(err)
-                    return cb(null, mapRepos(filterRepos(docs)))
-                })
+                if (fallbackCache && fallbackCache.repos) {
+                    return cb(null, mapRepos(filterRepos(fallbackCache.repos)))
+                }
+                return cb(err)
             } else {
                 let repos = mapRepos(filterRepos(body))
                 
@@ -61,12 +70,10 @@ function requestEvents(cb) {
         let opts = composeRequestOptions(token)
         request('https://api.github.com/users/freemasen/events', opts, (err, res, body) => {
             if (err) {
-                db.events.find({}, (err, docs) => {
-                    if (err) {
-                         return cb(err)
-                    }   
-                    return cb(null, mapEvents(filterEvents(docs)))
-                })
+                if (fallbackCache && fallbackCache.events) {
+                    return cb(null, mapEvents(filterEvents(fallbackCache.events)))
+                }
+                return cb(err)
             } else {
                 let events = mapEvents(filterEvents(body))
                 cache(body, 'events')
@@ -153,27 +160,7 @@ function mapEvents(events) {
 
 function cache(content, collection) {
     let parsed = parse(content)
-    db[collection].find({}, (err, docs) => {
-        let ids = []
-        if (docs) {
-            let ids = docs.map((doc) => {
-                return doc._id
-            })
-        }
-        db[collection].save(parsed, (err) => {
-            if (!err && ids.length > 0) {
-                db[collection].remove({_id: {$in: ids}}, (err) => {
-                    if (err) console.log(err)
-                    console.log('completed remove')
-                })
-            } else if (err) {
-                console.log('error saving to collection')
-                console.log(err)
-            } else {
-                console.log('nothing to remove...')
-            }
-        })
-    })
+    fallbackCache[collection] = parsed
 }
 
 
