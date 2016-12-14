@@ -2,6 +2,7 @@ app = require('./src/configure.js')
 let github = require('./src/github.js')
 let mongo = require('mongojs')
 let db = mongo('rm.p:superPowers@localhost/rm', ['jobs', 'about'])
+const contact = require('./src/contact.js')
 
 function removeAuthentication() {
     db = mongo('rm', ['jobs', 'about'])
@@ -102,7 +103,7 @@ app.get('/portfolio', (req, res) => {
 })
 
 app.post('/contact', (req, res) => {
-    messages.new(req.body, (err) => {
+    contact(req.body, (err) => {
         if (err) {
             console.log(err.message)
             return res.status(400).send()
