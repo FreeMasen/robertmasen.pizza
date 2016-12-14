@@ -11,7 +11,7 @@ function addContact(obj, cb) {
     let command = `echo ${mailBody} | mail -s "rm.p contact form r.f.masen@gmail.com`
     exec(command, (err, stdOut, stdErr) => {
         if (err) console.log(err.message)
-        if (stdout) console.log(stdOut)
+        if (stdOut) console.log(stdOut)
         if (stdErr) console.log(stdErr)
     })
     db.contact.insert(obj, (err) => {
