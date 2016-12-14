@@ -104,6 +104,7 @@ app.get('/portfolio', (req, res) => {
 app.post('/contact', (req, res) => {
     messages.new(req.body, (err) => {
         if (err) {
+            console.log(err.message)
             return res.status(400).send()
         }
         res.send()
