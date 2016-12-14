@@ -9,7 +9,11 @@ function addContact(obj, cb) {
                     roll: ${obj.roll | "N/A"}
                     content: ${obj.content}`
     let command = `echo ${mailBody} | mail -s "rm.p contact form r.f.masen@gmail.com`
-    exec(command)
+    exec(command, (err, stdOut, stdErr) => {
+        if (err) console.log(err.message)
+        if (stdout) console.log(stdOut)
+        if (stdErr) console.log(stdErr)
+    })
     db.contact.insert(obj, (err) => {
         if (err) {
             cb(err)
