@@ -1,5 +1,14 @@
 <link rel="stylesheet" type="text/css" href="css/portfolio.css" />
+<div id="notable-projects" class="container">
+    <h1 class="container-heading" id="notable-heading">Notable Projects</h1>
+    <div ng-repeat="project in $ctrl.projects" class="project list-item">
+        <a class="heading" ng-href="{{project.url}}">{{project.name}}</a>
+        <h3 class="sub-heading">Description</h3>
+        <span class="description">{{project.description}}</span>
+    </div>
+</div>
 <div class="portfolio">
+    
     <ul class="lately container">
         <h1 class="container-heading"><a href="https://github.com/freemasen">Latest Commits</a></h1>
         <li class="event list-item" ng-repeat="event in $ctrl.events">

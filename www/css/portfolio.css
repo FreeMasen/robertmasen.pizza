@@ -15,6 +15,22 @@
     min-width: 200px;
 }
 
+#notable-projects {
+    width: 85%;
+    height: unset;
+    display: flex;
+    flex-flow: column;    
+}
+
+.project {
+    display: flex;
+    flex-flow: column;
+}
+
+.project > .description {
+    font-style: oblique;
+}
+
 .container-heading {
     font-size: 5vw;
 }
@@ -22,7 +38,10 @@
 .container-heading a {
     text-decoration: none;
     color: inherit;
-    
+}
+
+#notable-heading {
+    margin-bottom: 5px;
 }
 
 .list-item {
