@@ -1,7 +1,7 @@
 app = require('./src/configure.js')
 let github = require('./src/github.js')
 let mongo = require('mongojs')
-let db = mongo('rm.p:superPowers@localhost/rm', ['jobs', 'about'])
+let db = mongo('rm', ['jobs', 'about', 'projects'])
 const contact = require('./src/contact.js')
 
 function removeAuthentication() {
@@ -93,11 +93,21 @@ app.get('/portfolio', (req, res) => {
                 console.log(err2)
                 return
             }
-            let r = {
-                repos: repos,
-                events: events
-            }
-            res.send(JSON.stringify(r))
+            db.projects.find({}, (err3, projects) => {
+                if (err3) {
+                    //res.status(403).send()
+                    console.log(err3)
+                    //return
+                }
+                if (!projects) projects = [];
+                let r = {
+                    repos: repos,
+                    events: events,
+                    projects: projects
+                }
+                res.send(JSON.stringify(r))
+            })
+            
         })
     })
 })
