@@ -1,7 +1,7 @@
 var mongo = require('mongojs')
 var fs = require('fs')
 
-var db = mongo('rm', ['jobs', 'nonjobs', 'about'])
+var db = mongo('rm', ['jobs', 'nonjobs', 'about', 'projects'])
 
 
 function dropAndInsert(coll, fn, drop) {
