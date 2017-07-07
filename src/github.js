@@ -83,6 +83,37 @@ function requestEvents(cb) {
     })
 }
 
+function requestVisData(cb) {
+    requestEvents((err, events) => {
+        if (err) return cb(err);
+        cb(null, mapEventsForVis(events));
+    });
+}
+
+function mapEventsForVis(events) {
+    var countMap = {}
+    for (var i = 0; i < events.length; i++) {
+        var event = events[i];
+        var name = event.repo.name;
+        var count = event.message.length;
+
+        if (countMap[name] === undefined) {
+            countMap[name] = 0;
+        }
+        countMap[name] += count;
+    }
+    var ret = [];
+    for (var k in countMap) {
+        ret.push({
+            name: k,
+            count: countMap[k]
+        });
+    }
+    return ret.sort((lhs, rhs) => {
+        return rhs.count - lhs.count
+    });
+}
+
 function composeRequestOptions(token) {
     return {
         auth: {
@@ -116,6 +147,7 @@ function mapRepos(repos) {
             stars: repo.stargazers_count,
             language: repo.language,
             description: repo.description
+
         }
     })
 }
@@ -163,9 +195,8 @@ function cache(content, collection) {
     fallbackCache[collection] = parsed
 }
 
-
-
 module.exports = {
     repos: requestRepoInfo,
-    events: requestEvents
+    events: requestEvents,
+    vis: requestVisData
 }

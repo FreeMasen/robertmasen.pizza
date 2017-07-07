@@ -11,6 +11,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
+    "d3": "^4.9.1",
     "express": "^4.14.0",
     "express-minify": "^0.2.0",
     "mongojs": "^2.4.0",

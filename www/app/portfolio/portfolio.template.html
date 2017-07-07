@@ -2,6 +2,10 @@
 <div class="portfolio">
     <ul class="lately container">
         <h1 class="container-heading"><a href="https://github.com/freemasen">Latest Commits</a></h1>
+        <li id="vis-container" class="list-item">
+            <span class="heading">breakdown by repository</span>
+            <div id="vis"></div>
+        </li>
         <li class="event list-item" ng-repeat="event in $ctrl.events">
                 <a class="heading" ng-href="{{event.repo.url}}" class="link" target="_blank">
                 {{event.repo.name}}  
