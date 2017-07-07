@@ -108,8 +108,11 @@
 }
 
 #vis > * {
-    margin-top: 5px;
     padding: 2px 5px;
+}
+
+#vis > * + * {
+    margin-top: 5px;
 }
 
 
