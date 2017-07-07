@@ -93,14 +93,25 @@ app.get('/portfolio', (req, res) => {
                 console.log(err2)
                 return
             }
-            let r = {
-                repos: repos,
-                events: events
-            }
-            res.send(JSON.stringify(r))
+            github.vis((err3, visuals) => {
+                if (err3) return res.status(403).send()
+                let r = {
+                    repos: repos,
+                    events: events,
+                    visuals: visuals
+                }
+                res.send(JSON.stringify(r))
+            })
         })
     })
-})
+});
+
+app.get('/portfolio/events', (req, res) => {
+    github.events((err, events) => {
+        res.send(JSON.stringify(events));
+    });
+
+});
 
 app.post('/contact', (req, res) => {
     contact(req.body, (err) => {

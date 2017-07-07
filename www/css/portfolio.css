@@ -94,6 +94,28 @@
     padding: 0;
 }
 
+#vis-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+#vis {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #878d90;
+    margin-bottom: 2px;
+}
+
+#vis > * {
+    padding: 2px 5px;
+}
+
+#vis > * + * {
+    margin-top: 5px;
+}
+
+
 @media (max-width: 800px) {
 
     .heading {
