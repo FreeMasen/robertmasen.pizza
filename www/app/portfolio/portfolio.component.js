@@ -14,15 +14,19 @@ angular.module('portfolio')
                     self.feedback = 'Unable to get portfolio information'
                 })
             function fillVis(visuals) {
+                var total = 0;
+                for (var i = 0; i < visuals.length; i++) {
+                    total += visuals[i].count;
+                }
                 d3.select('#vis')
                     .selectAll('div')
                     .data(visuals)
                     .enter()
                     .append('div')
                     .style('width', function(visual) {
-                        return visual.count + '%';
+                        return (visual.count / total) * 100 + '%';
                     })
-                    .style('background-color', '#878d90')
+                    .style('background-color', '#cc6959')
                     .text(function(visual) {
                         return visual.name + '(' + visual.count + ')';
                     });
