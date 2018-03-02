@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <base href="/">
   <link type="text/css" rel="stylesheet" href="css/style.css" />
-  <title>Robert F. Masen</title> 
+  <title>Robert F. Masen</title>
 </head>
 
 <body>
@@ -15,8 +15,7 @@
     <svg width="100%" viewBox="0 0 100 13">
       <defs>
         <clipPath id="mask">
-          <text lengthAdjust="spacingAndGlyphs" x="0" y="12" text-anchor="start"
-            fill="white" textLength="100">Robert F. Masen</text>
+          <text lengthAdjust="spacingAndGlyphs" x="0" y="12" text-anchor="start" fill="white" textLength="100">Robert F. Masen</text>
         </clipPath>
         <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
           <stop offest="30%" stop-color="#3cb8e3" />
@@ -55,12 +54,74 @@
             <li>Collaborate with technical business analyst and key business partners to better understand application requirements</li>
           </ul>
         </li>
+        <li>
+          <h2 class="list-item-title">Business Analyst</h2>
+          <h3 class="list-item-subtitle">Professional Data Analysts</h3>
+          <ul class="list-item-description">
+            <li>Build new features and perform bug fixes on an existing ASP.NET Web Forms application</li>
+            <li>Transition existing application functionality into a React application using Typescript</li>
+            <li>Create a stand alone console application for importing data from a 3rd party payroll system to an internal database</li>
+            <li>Write new and maintain existing Microsoft SQL Server stored procedures</li>
+            <li>Build and enhance Microsoft SSRS reports</li>
+            <li>Optimize existing Webpack/Typescript build process</li>
+            <li>Transition application source control from TFS to Git</li>
+            <li>Create Jest test suite for both UI Integration tests and Unit tests</li>
+            <li>Collaborate with technical business analyst and key business partners to better understand application requirements</li>
+          </ul>
+        </li>
+        <li>
+          <h2 class="list-item-title">Business Systems Consultant</h2>
+          <h3 class="list-item-subtitle">Wells Fargo</h3>
+          <ul class="list-item-description">
+            <li>As an opportunity to learn more about financial industry messaging standards and the applications that my department
+              uses to process them, I was asked to coordinate and participate in system integration and user acceptances
+              testing as well as production validation for a suite of 7 applications undergoing quarterly Java patches. I
+              created an MS Access application that would gather the required information from SQL and DB2 data sources and
+              generate trade files for me, reducing the total time of my testing activities from over 25 hours to less than
+              4 hours</li>
+            <li>My team is required to check the health of one of the applications we support each hour and document this check
+              by querying a TSQL database, reading a log file and performing a search in a web application. To make this
+              process more efficient I created a Nodejs script that runs at the top of each hour to query the database and
+              parse the text file</li>
+            <li>Three or more times a month, that is used as an application launcher becomes corrupted, even after implementing
+              daily corrective action to avoid this. To address issues of a corrupt application launcher, I created a working
+              prototype using Nodejs, Express and Angular. I am currently working on a version using GitHub's Electron platform
+              to replaces the existing Access Database</li>
+          </ul>
+        </li>
+        <li>
+          <h2 class="list-item-title">Quality Monitor</h2>
+          <h3 class="list-item-subtitle">Wells Fargo</h3>
+          <ul class="list-item-description">
+            <li>During a department transition, we lost our Database Analyst. I performed my normal duties, as well as technical
+              support for a department of 10, using 4 inter-related shared MS Access applications</li>
+            <li>In an under resourced department, I was able to develop an MS Access solution for evaluating employee performance.
+              My solution reduced the time spent on this task from 40 hours each month to less than 8 hours each month.</li>
+            <li>My department’s data import process was taking as long as an hour each morning. I re-worked the MS Access import
+              query to reduce this to under a minute</li>
+            <li>I was trained over the course of 3 months to pull monthly reporting using a highly technical process. I developed
+              a set of MS Access reports to pull this data quickly and efficiently, allowing this task to be performed by
+              almost anyone on my team</li>
+            <li>In preparation for a career transition, I created a set of documents and workflows to allow any member of my
+              team to navigate common issues for the department’s Access databases</li>
+          </ul>
+        </li>
       </ul>
     </div>
+    <div id="education">
+        <h1 class="section-title">Education</h1>
+        <ul class="section-list">
+          <li>
+            <h2 class="list-item-title">Associate's of Applied Science in Software Development</h2>
+            <h3 class="list-item-subtitle">Minneapolis Community and Technical College</h3>
+          </li>
+          <li>
+            <h2 class="list-item-title">Bachelor's of Science in Communications</h2>
+            <h3 class="list-item-subtitle">Eastern Michigan University</h3>
+          </li>
+        </ul>
+        </div>
   </main>
-  <footer id="footer">
-
-  </footer>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       var loc = window.location.pathname;
@@ -69,11 +130,8 @@
       if (loc == '/' || loc.indexOf('resume') < -1) {
         console.log('home')
         el = document.getElementById('resume-link');
-      } else if (loc.indexOf('about') > -1) {
-        console.log('about');
-        el = document.getElementById('resume-link');
       }
-      if (!el) return console.log('no el');
+      if (!el) return;
       let currentClass = el.getAttribute('class');
       if (!currentClass) currentClass = '';
       let classList = currentClass.split(' ');
