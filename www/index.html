@@ -1,73 +1,41 @@
 <!DOCTYPE html>
-<html ng-app="rm">
-    <head>
-        <meta name="viewport" content="initial-scale=1">
-
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-
-        <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-        <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
-        <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="theme-color" content="#f5f5f5">
-        <script src="bower/angular/angular.min.js"></script>
-
-    </head>
-    <body >
-        <div class="wrapper" ng-click="highlight()">
-            <div class="header">
-                <img src="img/me-text.png" />
-            </div>
-            <link rel="stylesheet" type="text/css" href="css/navigation.css" />
-            <div class="navigation " ng-controller="navController">
-                <div class="nav-bar" ng-if="!printing">
-                    <div ng-repeat="button in elements" class="nav-item">
-                        <div class="item-list">
-                            <div class="item-container" ng-mouseover="highlight(button.name)" ng-mouseleave="highlight()">
-                                <a ng-href="{{ button.link.href }}" class="nav-link" ng-class="{ active: isSelected(button.name)}" >{{ button.link.display }}</a>
-                                <div class="sub-container" ng-class="{ hidden: highlighted != button.name, shown: highlighted == button.name }">
-                                    <div ng-repeat="sub in button.subs" class="sub-item nav-item" >
-                                        <a ng-href="{{ sub.href }}" class="sub-item-link nav-link" ng-class="{active: isSelected(sub.name)}">{{ sub.display }}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="sub-nav nav-bar" ng-if="subNav.length > 0">
-                    <div class="nav-item" ng-repeat="sub in subNav">
-                        <a ng-href="{{ sub.href }}" class="nav-link" >{{ sub.name }}</a>
-                    </div>
-                </div>
-            </div>
-            <div class="view-container" >
-                <div ng-view class="view-frame"></div>
-            </div>
-        </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <base href="/">
+    <!-- <link type="text/css" rel="stylesheet" href="css/style.css" /> -->
+    <title>Robert F. Masen</title>
+</head>
+<body>
+    <header id="banner">
+        <svg viewBox="0 0 100 20">
+            <defs>
+              <clipPath id="mask">
+                <text style="font-family: sans-serif" x="0" y="15" text-anchor="start" fill="white" textLength="100">Robert F. Masen</text>
+              </clipPath>
+              <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                <stop offest="30%" stop-color="#3cb8e3" />
+                <stop offset="70%" stop-color="#cb6b5b" />
+              </linearGradient>
+            </defs>
+            <rect
+              width="100" 
+              height="25"
+              fill="url(#gradient)"
+              clip-path="url(#mask)"
+            />
+        </svg>
+    </header>
+    <nav id="navigation">
         
-        <script src="bower/angular-route/angular-route.js"></script>
-        <script src="bower/angular-animate/angular-animate.min.js"></script>
+    </nav>
+    <main id="content">
 
-        <script src="app/navigation/navigation.module.js"></script>
-        <script src="app/navigation/navigation.controller.js"></script>
-        
-        <script src="app/resume/resume.module.js"></script>
-        <script src="app/resume/resume.component.js"></script>
+    </main>
+    <footer id="footer">
 
-        <script src="app/portfolio/portfolio.module.js"></script>
-        <script src="app/portfolio/portfolio.component.js"></script>
-
-        <script src="app/contact/contact.module.js"></script>
-        <script src="app/contact/contact.component.js"></script>
-
-        <script src="app/about/about.module.js"></script>
-        <script src="app/about/about.component.js"></script>
-
-        <script src="app/app.module.js"></script>
-        <script src="app/app.config.js"></script>
-        <script src="analytics.js"></script>
-        
-        <script src="lib/d3.min.js"></script>
-    </body>
+    </footer>
+</body>
 </html>
