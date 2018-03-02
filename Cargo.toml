@@ -1,0 +1,8 @@
+[package]
+name = "rfm"
+version = "0.1.0"
+authors = ["rmasen"]
+
+[dependencies]
+hyper = "*"
+pony = "*"

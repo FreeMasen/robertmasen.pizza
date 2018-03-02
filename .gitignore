@@ -10,3 +10,5 @@ jsconfig.json
 **.DS_Store
 
 reposFromMongo.json
+/target/
+**/*.rs.bk
