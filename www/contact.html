@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <base href="/">
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/contact.css" />
+    <title>Robert F. Masen</title>
+    <link href="https://fonts.googleapis.com/css?family=Arvo|Bitter|Cutive|Lora:700|Slabo+27px|Trocchi|Vesper+Libre" rel="stylesheet">
+</head>
+<body>
+    <header id="banner">
+        <svg width="100%" viewBox="0 0 100 13">
+            <defs>
+                <clipPath id="mask">
+                    <text lengthAdjust="spacingAndGlyphs" x="0" y="12" text-anchor="start" fill="white" textLength="100">Robert F. Masen</text>
+                </clipPath>
+                <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="17.5%" stop-color="rgba(0,0,0,0.5)" />
+                    <stop offset="17.5%" stop-color="#3cb8e3" />
+                    <stop offset="84.5%" stop-color="#3cb8e3" />
+                    <stop offset="84.5%" stop-color="rgba(0,0,0,0.5)" />
+                </linearGradient>
+            </defs>
+            <rect width="100" height="13" fill="url(#gradient)" clip-path="url(#mask)" />
+        </svg>
+    </header>
+    <nav id="navigation">
+        <ul>
+            <li>
+                <a id="resume-link" href="/">Resume</a>
+            </li>
+            <li>
+                <a id="about-link" href="/about.html">About</a>
+            </li>
+            <li>
+                <a class="selected" id="contact-link" href="/contact.html">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <main id="content">
+        <form id="contact-form" method="post" id="contact" action="/contact">
+            <div class="input-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required />
+            </div>
+            <div class="input-group">
+                <label for="email">Your Email Address</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div class="input-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="button-group">
+                <button id="reset" type="reset">Clear</button>
+                <button id="submit" type="submit">Send</button>
+            </div>
+            <div id="messages" style="display: none;"></div>
+        </form>
+    </main>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('contact-form');
+            if (!form) return;
+            form.submit.addEventListener('click', submitContact);
+            console.log('added submit listener');
+            for (var i = 0; i < form.elements.length; i++) {
+                var el = form.elements[i];
+                el.addEventListener('invalid', elementInvalid);
+                el.addEventListener('valid', elementValid);
+            }
+        });
+
+        function submitContact(ev) {
+            ev.preventDefault();
+            var form = ev.currentTarget.form;
+            if (!form) return displayMessage('Unable to find form!!! Something has gone horribly wrong....');
+            if (!validateForm(form.name, form.email, form.message)) return;
+            var body = {
+                name: form.name.value,
+                address: form.email.value,
+                message: form.message.value
+            }
+            if (fetch) {
+                fetch('/contact', {
+                    method: 'POST',
+                    body: JSON.stringify(body),
+                    headers: new Headers({
+                    'Content-Type': 'application/json'
+                    }),
+                }).then(res => {
+                    if (res.ok) {
+                        res.text().then(txt => {
+                            resOk(txt);
+                        })
+                    } else {
+                        resError(res);
+                    }
+                }, resError)
+                .catch(resError);
+            } else {
+                var req = new XMLHttpRequest();
+                req.open('POST', '/contact');
+                req.onreadystatechange = reqStateChanged;
+                req.send(JSON.stringify(body));
+            }
+        }
+
+        function reqStateChanged(ev) {
+            let xhr = ev.currentTarget;
+            if (xhr.readyState == xhr.DONE) {
+                if (xhr.statuscode > 200) {
+                    resError();
+                } else {
+                    resOk();
+                }
+            }
+        }
+
+        function elementInvalid(ev) {
+            markInvalid(ev.currentTarget);
+        }
+
+        function elementValid(ev) {
+            console.log('elementValid', ev);
+            markValid(ev);
+        }
+
+        function validateForm(name, email, msg) {
+            if (name.value.length < 3) {
+                markInvalid(name);
+                displayMessage('Name must be at least 3 characters, maybe include your last name?', true);
+                return false;
+            } else {
+                name.setAttribute('class', '');
+            }
+            var atIndex = email.value.indexOf('@');
+
+            if (atIndex < 0) {
+                email.setAttribute('class', 'error');
+                displayMessage('Email addresses must have and @', true);
+                return false;
+            }
+            var periodIndex = email.value.substring(atIndex).indexOf('.');
+            if (periodIndex < 0) {
+                email.setAttribute('class', 'error');
+                displayMessage('Email addresses must have a . after the @', true);
+                return false;
+            }
+            email.setAttribute('class', '');
+            if (msg.value.length < 10) {
+                msg.setAttribute('clsss', 'error');
+                displayMessage('Please only send a thoughtful message (even "I Love You" is 10 characters)');
+                return false;
+            }
+            return true;
+        }
+
+        function markInvalid(el) {
+            el.setAttribute('class', (el.className + ' error').replace(/  /g, ' ').trim());
+        }
+
+        function markValid(el) {
+            el.setAttribute('class', el.className.replace('error', '').replace(/  /g, ' '));
+        }
+
+        function resOk(res) {
+            displayMessage(res);
+            var form = document.getElementById('contact-form');
+            if (!form) return;
+            form.message.value = '';
+        }
+
+        function resError(res) {
+            console.error(res);
+            res.text().then(txt => {
+                console.log(txt);
+            })
+            displayMessage('Error sending message, try again later maybe?', true);
+        }
+
+        function displayMessage(text, isError) {
+            var e = document.getElementById('messages');
+            if (!e) return console.error('Unable to find error-message', text);
+            var tx = document.createTextNode(text);
+            var msg = document.createElement('span');
+            var cls = 'message';
+            if (isError) {
+                cls += ' error';
+            }
+            msg.setAttribute('class', cls);
+            msg.appendChild(tx);
+            e.appendChild(msg);
+            e.style.display = 'flex';
+            setTimeout(clearError, 5000, msg);
+        }
+
+        function clearError(msg) {
+            var e = document.getElementById('messages');
+            if (!e) return console.error('Unable to find error-message', text);
+            e.removeChild(msg);
+            if (e.children.length > 0) return;
+            e.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
