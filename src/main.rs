@@ -23,7 +23,7 @@ fn main() {
     cwd.pop();
     let cwd_str = cwd.to_string_lossy();
     println!("starting from {:?}", cwd_str);
-    pb.use_static(&(cwd_str + "/../../www/"));
+    pb.use_static(&(cwd_str + "./www/"));
     pb.post("/contact", contact);
     pb.set_know_extensions(&["html",
                             "js",
