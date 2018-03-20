@@ -1,0 +1,25 @@
+@import 'style';
+
+#img-me {
+    float: left;
+    margin-right: 5px;
+}
+
+#links {
+    clear: both;
+}
+.tab-content {
+    padding-left: 5px;
+    ul {
+        padding-left: 0;
+        font-size: 16pt;
+        li {
+            a{
+                font-size: 18pt;
+            }
+        }
+        li + li {
+            margin-top: 5px;
+        }
+    }
+}

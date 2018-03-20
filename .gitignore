@@ -12,3 +12,4 @@ jsconfig.json
 reposFromMongo.json
 /target/
 **/*.rs.bk
+.sass-cache

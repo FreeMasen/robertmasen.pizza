@@ -1,65 +1,167 @@
-.section-title {
-    font-size: 36pt;
-    margin-top: 0;
-    margin-bottom: 2px;
-}
-.section-list {
-    margin: 0;
-    padding-left: 5px;
-}
+@font-face {
+  font-family: 'Slabo';
+  src: url("../fonts/Slabo.ttf"); }
+html, body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; }
 
-.section-list > li + li {
-    margin-top: 10px;
-}
+ul {
+  list-style-type: none;
+  margin: 0; }
+
+h1, h2, h3, h4 {
+  margin: 0; }
+
+body > * {
+  font-family: 'Slabo', serif;
+  box-sizing: border-box; }
+
+#banner {
+  padding: 10px;
+  margin: 0 2px;
+  width: 99%; }
+  #banner svg {
+    margin: 0 5px; }
+
+nav {
+  padding: 1px 0; }
+  nav ul {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    overflow-x: auto;
+    margin: 0; }
+    nav ul li {
+      float: left;
+      display: block;
+      padding: 0 10px;
+      margin: 5px; }
+      nav ul li a {
+        padding: 5px 10px;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        font-size: 30pt;
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        margin-bottom: 10px; }
+        nav ul li a:hover {
+          transform: translate(-1px, -1px);
+          box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2); }
+        nav ul li a:active {
+          transform: translate(2px, 2px);
+          box-shadow: 0 0 0 0 black; }
+        nav ul li a.selected {
+          background: #3cb8e3; }
+        nav ul li a.selected:hover, nav ul li a.selected:active {
+          transform: unset;
+          box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+          cursor: default; }
+  nav main {
+    width: 90%;
+    margin: 0 auto; }
+  @media (max-width: 400px) {
+    nav .section-list-title {
+      font-size: 7vh; }
+    nav .list-item-title {
+      font-size: 14pt; }
+    nav .list-item-subtitle {
+      font-size: 14pt; }
+    nav .list-item-description {
+      font-size: 12pt; } }
+  @media (min-width: 401px) and (max-width: 699px) {
+    nav nav > ul > li > a {
+      font-size: 24pt; }
+    nav .section-list-title {
+      font-size: 24pt; }
+    nav .list-item-title {
+      font-size: 22pt; }
+    nav .list-item-subtitle {
+      font-size: 20pt; } }
+  @media (min-width: 700px) {
+    nav #education .section-list {
+      display: flex;
+      flex-flow: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start; }
+    nav #education .section-list li + li {
+      margin-left: 20px;
+      margin-top: 0; } }
+  @media (max-width: 400px) {
+    nav nav ul li {
+      padding: 2px 5px; }
+    nav nav ul li a {
+      font-size: 14pt; } }
+
+#content {
+  padding: 0 10px; }
+
+.section-title {
+  font-size: 36pt;
+  margin-top: 0;
+  margin-bottom: 2px; }
+
+.section-list {
+  margin: 0;
+  padding-left: 5px; }
+  .section-list li + li {
+    margin-top: 10px; }
 
 .section-list-title {
-    margin-top: 0;
-    margin-bottom: 2px;
-    font-size: 20pt;
-}
+  margin-top: 0;
+  margin-bottom: 2px;
+  font-size: 20pt; }
 
 .list-item-title {
-    margin-top: 0;
-    margin-bottom: 2px;
-    font-size: 18pt;
-}
+  margin-top: 0;
+  margin-bottom: 2px;
+  font-size: 18pt; }
 
 .list-item-subtitle {
-    margin: 0;
-    font-size: 16pt;
-    font-style: oblique;
-    font-weight: 100;
-}
+  margin: 0;
+  font-size: 16pt;
+  font-style: oblique;
+  font-weight: 100; }
 
 .list-item-description {
-    font-size: 14pt;
-    padding-left: 20px;
-    list-style: square;
-}
+  font-size: 14pt;
+  padding-left: 20px;
+  list-style: square; }
 
-@media (min-width: 401px) and ( max-width: 699px) {
-    .section-list-title {
-        font-size: 24pt;
-    }
-    .list-item-title {
-        font-size: 22pt;
-    }
-    .list-item-subtitle {
-        font-size: 20pt;
-    }
-}
+#education {
+  padding-bottom: 20px; }
 
+@media (min-width: 401px) and (max-width: 699px) {
+  .section-list-title {
+    font-size: 24pt; }
+
+  .list-item-title {
+    font-size: 22pt; }
+
+  .list-item-subtitle {
+    font-size: 20pt; } }
 @media (min-width: 700px) {
-    #education > .section-list {
-        display: flex;
-        flex-flow: row;
-        justify-content: flex-start;
-        align-items: flex-start;
-        align-content: flex-start;
-    }
+  #education > .section-list {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start; }
 
-    #education > .section-list > li + li {
-        margin-left: 20px;
-        margin-top: 0;
-    }
-}
+  #education > .section-list > li + li {
+    margin-left: 20px;
+    margin-top: 0; } }
+
+/*# sourceMappingURL=resume.css.map */
