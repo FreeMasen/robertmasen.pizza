@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'Slabo';
   src: url("../fonts/Slabo.ttf"); }
-html, body {
+html,
+body {
   border: 0;
   margin: 0;
   padding: 0;
@@ -12,7 +13,10 @@ ul {
   list-style-type: none;
   margin: 0; }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   margin: 0; }
 
 body > * {
@@ -68,43 +72,18 @@ nav {
           transform: unset;
           box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
           cursor: default; }
-  nav main {
-    width: 90%;
-    margin: 0 auto; }
-  @media (max-width: 400px) {
-    nav .section-list-title {
-      font-size: 7vh; }
-    nav .list-item-title {
-      font-size: 14pt; }
-    nav .list-item-subtitle {
-      font-size: 14pt; }
-    nav .list-item-description {
-      font-size: 12pt; } }
-  @media (min-width: 401px) and (max-width: 699px) {
-    nav nav > ul > li > a {
-      font-size: 24pt; }
-    nav .section-list-title {
-      font-size: 24pt; }
-    nav .list-item-title {
-      font-size: 22pt; }
-    nav .list-item-subtitle {
-      font-size: 20pt; } }
-  @media (min-width: 700px) {
-    nav #education .section-list {
-      display: flex;
-      flex-flow: row;
-      justify-content: flex-start;
-      align-items: flex-start;
-      align-content: flex-start; }
-    nav #education .section-list li + li {
-      margin-left: 20px;
-      margin-top: 0; } }
-  @media (max-width: 400px) {
-    nav nav ul li {
-      padding: 2px 5px; }
-    nav nav ul li a {
-      font-size: 14pt; } }
 
+main {
+  width: 90%;
+  margin: 0 auto; }
+
+@media (min-width: 401px) and (max-width: 699px) {
+  nav > ul > li > a {
+    font-size: 20pt; } }
+@media (max-width: 400px) {
+  nav > ul > li > a {
+    padding: 5px 5px;
+    font-size: 16pt; } }
 #img-me {
   float: left;
   margin-right: 5px; }
