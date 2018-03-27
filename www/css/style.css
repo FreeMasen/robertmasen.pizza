@@ -84,6 +84,7 @@ nav > ul > li > a:active {
 
 nav > ul > li > a.selected {
     background: #3cb8e3;
+    color: #000;
 }
 
 nav > ul > li > a.selected:hover,
