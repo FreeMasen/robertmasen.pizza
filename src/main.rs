@@ -6,7 +6,6 @@ extern crate serde_derive;
 extern crate lettre;
 extern crate serde_json;
 extern crate futures;
-use std::env;
 use hyper::server::{NewService, Http, Request, Response};
 use hyper::header::{ContentLength,};
 use hyper::{StatusCode};
@@ -22,23 +21,9 @@ fn main() {
 
     pb.use_static("www/");
     pb.post("/contact", contact);
-    pb.set_know_extensions(&["html",
-                            "js",
-                            "css",
-                            "ico",
-                            "jpg",
-                            "png",
-                            "woff2",
-                            "ttf",
-                            "txt",
-                            "xml",
-                            "rss",
-                            "svg",
-                            "txt",
-                            "gif",
-                            "map",
-                            "otf",
+    pb.add_known_extension(&["otf",
                             "ttf"]);
+    pb.use_not_found("www/404.html");
     let h = Http::new().bind(&addr, move || pb.new_service()).expect("Unable to start server on 4444");
     println!("Listening on 4444");
     let _ = h.run().expect("Unable to start server on 4444");
