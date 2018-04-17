@@ -6,15 +6,14 @@ extern crate serde_derive;
 extern crate lettre;
 extern crate serde_json;
 extern crate futures;
-use std::env;
 use hyper::server::{NewService, Http, Request, Response};
 use hyper::header::{ContentLength,};
 use hyper::{StatusCode};
 use pony::pony_builder::{PonyBuilder};
+use pony::HyperResult;
 use lettre::{SimpleSendableEmail, EmailTransport, EmailAddress, SmtpTransport};
 use std::time::{SystemTime, UNIX_EPOCH};
-use futures::stream::Stream;
-use futures::Future;
+use futures::{Future, Stream};
 
 fn main() {
     let addr = "127.0.0.1:4444".parse().unwrap();
@@ -22,23 +21,7 @@ fn main() {
 
     pb.use_static("www/");
     pb.post("/contact", contact);
-    pb.set_know_extensions(&["html",
-                            "js",
-                            "css",
-                            "ico",
-                            "jpg",
-                            "png",
-                            "woff2",
-                            "ttf",
-                            "txt",
-                            "xml",
-                            "rss",
-                            "svg",
-                            "txt",
-                            "gif",
-                            "map",
-                            "otf",
-                            "ttf"]);
+    pb.add_known_extension(&["ttf"]);
     let h = Http::new().bind(&addr, move || pb.new_service()).expect("Unable to start server on 4444");
     println!("Listening on 4444");
     let _ = h.run().expect("Unable to start server on 4444");
@@ -52,7 +35,7 @@ struct Email {
     message: String,
 }
 
-fn contact(req: Request) -> Box<futures::Future<Error=hyper::Error, Item=hyper::Response>> {
+fn contact(req: Request) -> HyperResult {
     Box::new(
         req.body().concat2().map(|b| {
             let msg = if let Ok(m) = serde_json::from_slice::<Email>(b.as_ref()) {

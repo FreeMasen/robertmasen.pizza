@@ -4,10 +4,10 @@ version = "0.1.0"
 authors = ["rmasen"]
 
 [dependencies]
-hyper = "*"
-pony = "*"
+hyper = "^0.11"
+futures = "^0.1"
+pony = "0.1.8"
 serde = "^1.0"
 serde_derive = "^1.0"
 serde_json = "^1.0"
 lettre = "^0.7"
-futures = "*"
