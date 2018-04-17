@@ -4,14 +4,9 @@ version = "0.1.0"
 authors = ["rmasen"]
 
 [dependencies]
-<<<<<<< HEAD
 hyper = "^0.11"
 futures = "^0.1"
 pony = "0.1.8"
-=======
-hyper = "*"
-pony = "0.1.7"
->>>>>>> 9deb187959da619082c642487dacbe25d4e4d6e6
 serde = "^1.0"
 serde_derive = "^1.0"
 serde_json = "^1.0"

@@ -21,13 +21,9 @@ fn main() {
 
     pb.use_static("www/");
     pb.post("/contact", contact);
-<<<<<<< HEAD
-    pb.add_known_extension(&["ttf"]);
-=======
     pb.add_known_extension(&["otf",
                             "ttf"]);
     pb.use_not_found("www/404.html");
->>>>>>> 9deb187959da619082c642487dacbe25d4e4d6e6
     let h = Http::new().bind(&addr, move || pb.new_service()).expect("Unable to start server on 4444");
     println!("Listening on 4444");
     let _ = h.run().expect("Unable to start server on 4444");
