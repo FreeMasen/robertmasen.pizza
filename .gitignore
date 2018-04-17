@@ -13,3 +13,6 @@ reposFromMongo.json
 /target/
 **/*.rs.bk
 .sass-cache
+**/*.log
+rfm
+rm.p

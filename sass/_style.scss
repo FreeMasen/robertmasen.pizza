@@ -78,6 +78,7 @@ nav {
                 }
                 &.selected {
                     background: #3cb8e3;
+		    color: #000;
                 }
                 &.selected:hover,
                 &.selected:active {
@@ -93,6 +94,7 @@ nav {
 main {
     width: 90%;
     margin: 0 auto;
+    display: block;
 }
 
 @media (min-width: 401px) and ( max-width: 699px) {
