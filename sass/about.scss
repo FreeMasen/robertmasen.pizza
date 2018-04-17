@@ -1,12 +1,51 @@
 @import 'style';
 
-#img-me {
-    float: left;
-    margin-right: 5px;
-}
 
 #links {
     clear: both;
+}
+#the-author {
+    display: flex;
+    flex-flow: column;
+    .tab-content {
+        display: flex;
+        flex-flow: row;
+        #me {
+            margin-left: 5px;
+            .lists {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-start;
+                align-content: flex-start;
+                align-items: flex-start;
+                padding: 10px 0;
+                margin-left: 10px;
+                .list {
+                    padding: 0 10px;
+                    h2 {
+                        font-size: 14pt;
+                    }
+                    ul {
+                        font-size: 12pt;
+                        list-style: square;
+                        padding-left: 10px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 400px) {
+    #the-author {
+        .tab-title {
+            text-align: center;
+        }
+        .tab-content {
+            flex-flow: column;
+            align-items: center;
+        }
+    }
 }
 .tab-content {
     padding-left: 5px;
